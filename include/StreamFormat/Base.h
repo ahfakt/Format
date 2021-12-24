@@ -32,7 +32,7 @@ enum class BaseMode : short {
 };
 
 /**
- * @brief	Stream::Input Base decoder
+ * @brief	Stream::Input %Base decoder
  * @class	BaseDecode Base.h "StreamFormat/Base.h"
  */
 class BaseDecode : public BufferInput {
@@ -72,7 +72,7 @@ public:
 };//class BaseDecode
 
 /**
- * @brief	Stream::Output Base encoder
+ * @brief	Stream::Output %Base encoder
  * @class	BaseEncode Base.h "StreamFormat/Base.h"
  * @see		https://tools.ietf.org/html/rfc4648
  */
@@ -108,7 +108,7 @@ public:
 };//class BaseEncode
 
 /**
- * @brief Stream::Input / Stream::Output Base decoder and encoder
+ * @brief Stream::Input / Stream::Output %Base decoder and encoder
  * @class Base Base.h "StreamFormat/Base.h"
  */
 class Base : public BaseDecode, public BaseEncode {
