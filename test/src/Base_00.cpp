@@ -66,44 +66,6 @@ int main() {
 	test("base64_utf7.enc", Stream::Format::BaseMode::BASE64_UTF7,  length, maxChunkLength);
 	test("base64_imap.enc", Stream::Format::BaseMode::BASE64_IMAP,  length, maxChunkLength);
 
-	std::cout
-			<< "bool "
-			<< std::to_string(std::numeric_limits<bool>::max()) << '\n'
-			<< "char8_t "
-			<< std::to_string(std::numeric_limits<char8_t>::max()) << '\n'
-			<< "char "
-			<< std::to_string(std::numeric_limits<char>::max()) << '\n'
-			<< "unsigned char "
-			<< std::to_string(std::numeric_limits<unsigned char>::max()) << '\n'
-			<< "char16_t "
-			<< std::to_string(std::numeric_limits<char16_t>::max()) << '\n'
-			<< "short "
-			<< std::to_string(std::numeric_limits<short>::max()) << '\n'
-			<< "unsigned short "
-			<< std::to_string(std::numeric_limits<unsigned short>::max()) << '\n'
-			<< "wchar_t "
-			<< std::to_string(std::numeric_limits<wchar_t>::max()) << '\n'
-			<< "char32_t "
-			<< std::to_string(std::numeric_limits<char32_t>::max()) << '\n'
-			<< "int "
-			<< std::to_string(std::numeric_limits<int>::max()) << '\n'
-			<< "unsigned int "
-			<< std::to_string(std::numeric_limits<unsigned int>::max()) << '\n'
-			<< "long "
-			<< std::to_string(std::numeric_limits<long>::max()) << '\n'
-			<< "unsigned long "
-			<< std::to_string(std::numeric_limits<unsigned long>::max()) << '\n'
-			<< "long long "
-			<< std::to_string(std::numeric_limits<long long>::max()) << '\n'
-			<< "unsigned long long "
-			<< std::to_string(std::numeric_limits<unsigned long long>::max()) << '\n'
-			<< "float "
-			<< std::to_string(std::numeric_limits<float>::max()) << '\n'
-			<< "double "
-			<< std::to_string(std::numeric_limits<double>::max()) << '\n'
-			<< "long double "
-			<< std::to_string(std::numeric_limits<long double>::max()) << '\n';
-
 	return 0;
 }
 

@@ -411,7 +411,7 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 			size = provideData(size);
 		} catch (Input::Exception& exc) {
 			if (exc.code() == std::make_error_code(static_cast<std::errc>(ENODATA))) {
-				finalize();
+				finalizeDecoding();
 				return 0; // try again to read from mTemp
 			}
 			throw;
@@ -423,7 +423,7 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 	if (ctx->update(ctx, reinterpret_cast<unsigned char*>(dest), &outl,
 			reinterpret_cast<unsigned char const*>(mGet), static_cast<int>(size))) {
 		mGet += size;
-		finalize();
+		finalizeDecoding();
 		return outl;
 	}
 
@@ -436,7 +436,7 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 }
 
 void
-BaseDecode::finalize()
+BaseDecode::finalizeDecoding()
 {
 	auto* ctx = reinterpret_cast<BaseContext*>(mCtx.get());
 	if (ctx->update) {
@@ -448,7 +448,7 @@ BaseDecode::finalize()
 }
 
 void
-BaseDecode::finalizeWhenNoData(bool on)
+BaseDecode::finalizeDecodingWhenNoData(bool on)
 { mFinalizeWhenNoData = on; }
 
 /**
@@ -686,7 +686,7 @@ BaseEncode::writeBytes(std::byte const* src, std::size_t size)
 }
 
 void
-BaseEncode::finalize()
+BaseEncode::finalizeEncoding()
 {
 	auto* ctx = reinterpret_cast<BaseContext*>(mCtx.get());
 	if (ctx->update) {
@@ -703,7 +703,7 @@ BaseEncode::finalize()
 BaseEncode::~BaseEncode()
 {
 	try {
-		finalize();
+		finalizeEncoding();
 	} catch (Output::Exception& exc) {
 		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
 	}

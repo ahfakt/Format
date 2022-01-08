@@ -65,10 +65,10 @@ public:
 	operator=(BaseDecode&& other) noexcept;
 
 	void
-	finalize();
+	finalizeDecoding();
 
 	void
-	finalizeWhenNoData(bool on = true);
+	finalizeDecodingWhenNoData(bool on = true);
 };//class BaseDecode
 
 /**
@@ -104,7 +104,7 @@ public:
 	~BaseEncode();
 
 	void
-	finalize();
+	finalizeEncoding();
 };//class BaseEncode
 
 /**
