@@ -109,8 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afe765d14bbfc0d6ed4413d820aedb343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad11bf0fd94bc402f24f1f5d89994a098"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html">BaseEncode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html#ad11bf0fd94bc402f24f1f5d89994a098">operator=</a> (<a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html">BaseEncode</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="separator:ad11bf0fd94bc402f24f1f5d89994a098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73e9638dda3250dc7f4f3640643a8dcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html#a73e9638dda3250dc7f4f3640643a8dcd">finalize</a> ()</td></tr>
-<tr class="separator:a73e9638dda3250dc7f4f3640643a8dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffa30ae147f4da60779ba962378c935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html#adffa30ae147f4da60779ba962378c935">finalizeEncoding</a> ()</td></tr>
+<tr class="separator:adffa30ae147f4da60779ba962378c935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -250,7 +250,7 @@ Friends</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/db0/Base_8cpp_source.html#l00703">703</a> of file <a class="el" href="../../d8/db0/Base_8cpp_source.html">Base.cpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>{</div>
 <div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>        finalize();</div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>        finalizeEncoding();</div>
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    } <span class="keywordflow">catch</span> (Output::Exception&amp; exc) {</div>
 <div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>        ::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));</div>
 <div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    }</div>
@@ -292,14 +292,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a73e9638dda3250dc7f4f3640643a8dcd" name="a73e9638dda3250dc7f4f3640643a8dcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73e9638dda3250dc7f4f3640643a8dcd">&#9670;&nbsp;</a></span>finalize()</h2>
+<a id="adffa30ae147f4da60779ba962378c935" name="adffa30ae147f4da60779ba962378c935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adffa30ae147f4da60779ba962378c935">&#9670;&nbsp;</a></span>finalizeEncoding()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Stream::Format::BaseEncode::finalize </td>
+          <td class="memname">void Stream::Format::BaseEncode::finalizeEncoding </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

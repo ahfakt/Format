@@ -120,12 +120,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aca0d2a3d496f7eff3d80a5ab14565081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5d4eba45fefb766633d4c5cd408e1e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/da6/classStream_1_1Format_1_1Base.html#ab5d4eba45fefb766633d4c5cd408e1e4">Base</a> (BaseMode mode, void const *sourceBuff, std::size_t sourceSize, void *sinkBuff, std::size_t sinkSize)</td></tr>
 <tr class="separator:ab5d4eba45fefb766633d4c5cd408e1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ad9cddc3145cb4807b16ea63aee60be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8f/classStream_1_1Format_1_1BaseDecode.html#a7ad9cddc3145cb4807b16ea63aee60be">finalize</a> ()</td></tr>
-<tr class="separator:a7ad9cddc3145cb4807b16ea63aee60be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18e7bd23b3296c8a827cbce672e06c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8f/classStream_1_1Format_1_1BaseDecode.html#a18e7bd23b3296c8a827cbce672e06c50">finalizeWhenNoData</a> (bool on=true)</td></tr>
-<tr class="separator:a18e7bd23b3296c8a827cbce672e06c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73e9638dda3250dc7f4f3640643a8dcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html#a73e9638dda3250dc7f4f3640643a8dcd">finalize</a> ()</td></tr>
-<tr class="separator:a73e9638dda3250dc7f4f3640643a8dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228854431cc8af5a3ef721cd934e344f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8f/classStream_1_1Format_1_1BaseDecode.html#a228854431cc8af5a3ef721cd934e344f">finalizeDecoding</a> ()</td></tr>
+<tr class="separator:a228854431cc8af5a3ef721cd934e344f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882eb6feb9db3c43daa195cf909431b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8f/classStream_1_1Format_1_1BaseDecode.html#a882eb6feb9db3c43daa195cf909431b2">finalizeDecodingWhenNoData</a> (bool on=true)</td></tr>
+<tr class="separator:a882eb6feb9db3c43daa195cf909431b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffa30ae147f4da60779ba962378c935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d69/classStream_1_1Format_1_1BaseEncode.html#adffa30ae147f4da60779ba962378c935">finalizeEncoding</a> ()</td></tr>
+<tr class="separator:adffa30ae147f4da60779ba962378c935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="elRef" href="../../../Stream/d7/d83/classStream_1_1Input.html">Stream::Input</a> / <a class="elRef" href="../../../Stream/df/dc2/classStream_1_1Output.html">Stream::Output</a> Base decoder and encoder. </p>
@@ -521,8 +521,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7ad9cddc3145cb4807b16ea63aee60be" name="a7ad9cddc3145cb4807b16ea63aee60be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ad9cddc3145cb4807b16ea63aee60be">&#9670;&nbsp;</a></span>finalize() <span class="overload">[1/2]</span></h2>
+<a id="a228854431cc8af5a3ef721cd934e344f" name="a228854431cc8af5a3ef721cd934e344f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a228854431cc8af5a3ef721cd934e344f">&#9670;&nbsp;</a></span>finalizeDecoding()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -531,7 +531,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Stream::Format::BaseDecode::finalize </td>
+          <td class="memname">void Stream::Format::BaseDecode::finalizeDecoding </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -557,8 +557,8 @@ Public Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a18e7bd23b3296c8a827cbce672e06c50" name="a18e7bd23b3296c8a827cbce672e06c50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18e7bd23b3296c8a827cbce672e06c50">&#9670;&nbsp;</a></span>finalizeWhenNoData()</h2>
+<a id="a882eb6feb9db3c43daa195cf909431b2" name="a882eb6feb9db3c43daa195cf909431b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a882eb6feb9db3c43daa195cf909431b2">&#9670;&nbsp;</a></span>finalizeDecodingWhenNoData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +567,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Stream::Format::BaseDecode::finalizeWhenNoData </td>
+          <td class="memname">void Stream::Format::BaseDecode::finalizeDecodingWhenNoData </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>on</em> = <code>true</code></td><td>)</td>
@@ -586,8 +586,8 @@ Public Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a73e9638dda3250dc7f4f3640643a8dcd" name="a73e9638dda3250dc7f4f3640643a8dcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73e9638dda3250dc7f4f3640643a8dcd">&#9670;&nbsp;</a></span>finalize() <span class="overload">[2/2]</span></h2>
+<a id="adffa30ae147f4da60779ba962378c935" name="adffa30ae147f4da60779ba962378c935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adffa30ae147f4da60779ba962378c935">&#9670;&nbsp;</a></span>finalizeEncoding()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -596,7 +596,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Stream::Format::BaseEncode::finalize </td>
+          <td class="memname">void Stream::Format::BaseEncode::finalizeEncoding </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
