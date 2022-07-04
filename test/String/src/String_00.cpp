@@ -18,7 +18,7 @@ int main() {
 	{
 		Stream::Format::StringOutput stringOutput(buf2, sizeof(buf2));
 		std::to_chars(buf1, buf1 + sizeof(buf1), FLT_MIN);
-		stringOutput.toChars(FLT_MIN);
+		stringOutput << FLT_MIN;
 		assert(std::equal(buf1, buf1 + sizeof(buf1), buf2));
 		std::cout << "FLT_MIN = \t" << buf1 << "\n\t\t\t" << buf2 << "\n";
 		std::memset(buf1, 0, sizeof(buf1));
@@ -29,7 +29,7 @@ int main() {
 	{
 		Stream::Format::StringOutput stringOutput(buf2, sizeof(buf2));
 		std::to_chars(buf1, buf1 + sizeof(buf1), FLT_MAX);
-		stringOutput.toChars(FLT_MAX);
+		stringOutput << FLT_MAX;
 		assert(std::equal(buf1, buf1 + sizeof(buf1), buf2));
 		std::cout << "FLT_MAX = \t" << buf1 << "\n\t\t\t" << buf2 << "\n\n";
 		std::memset(buf1, 0, sizeof(buf1));

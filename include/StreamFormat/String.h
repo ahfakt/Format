@@ -41,10 +41,25 @@ public:
 	StringOutput(StringOutput&& other) noexcept;
 
 	StringOutput&
-	toChars(Integer auto val, int base);
+	operator<<(std::string const& str);
 
 	StringOutput&
-	toChars(std::floating_point auto val);
+	operator<<(char const* str);
+
+	StringOutput&
+	operator<<(void const* ptr);
+
+	StringOutput&
+	operator<<(bool b);
+
+	StringOutput&
+	operator<<(Integer auto val);
+
+	StringOutput&
+	operator<<(std::floating_point auto val);
+
+	StringOutput&
+	toChars(Integer auto val, int base);
 
 	StringOutput&
 	toChars(std::floating_point auto val, std::chars_format fmt);

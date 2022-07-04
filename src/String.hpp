@@ -2,16 +2,6 @@
 
 namespace Stream::Format {
 
-StringOutput&
-StringOutput::toChars(Integer auto val, int base)
-{
-	constexpr std::size_t max = sizeof(val) * 8;
-	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val, base);
-	mPut = reinterpret_cast<std::byte*>(r.ptr);
-	return *this;
-}
-
 template <typename F>
 constexpr int max_exponent_digits10 = 0;
 
@@ -46,13 +36,27 @@ template <std::floating_point F>
 constexpr int max_scientific_length = 2 + std::numeric_limits<F>::max_digits10 + 2 + max_exponent_digits10<F>;
 
 StringOutput&
-StringOutput::toChars(std::floating_point auto val)
+StringOutput::operator<<(Integer auto val)
+{ return toChars(val, 10); }
+
+StringOutput&
+StringOutput::operator<<(std::floating_point auto val)
 {
 	constexpr std::size_t max = std::min(max_fixed_length<decltype(val)>, max_scientific_length<decltype(val)>);
 	provideSpace(max);
 	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val);
 	if (r.ec != std::errc())
 		throw Exception(std::make_error_code(r.ec));
+	mPut = reinterpret_cast<std::byte*>(r.ptr);
+	return *this;
+}
+
+StringOutput&
+StringOutput::toChars(Integer auto val, int base)
+{
+	constexpr std::size_t max = sizeof(val) * 8;
+	provideSpace(max);
+	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val, base);
 	mPut = reinterpret_cast<std::byte*>(r.ptr);
 	return *this;
 }
@@ -84,44 +88,6 @@ StringOutput::toChars(std::floating_point auto val, std::chars_format fmt, std::
 		throw Exception(std::make_error_code(r.ec));
 	mPut = reinterpret_cast<std::byte*>(r.ptr);
 	return *this;
-}
-
-template <typename T>
-concept StringOut = std::is_base_of_v<StringOutput, T>;
-
-auto&
-operator<<(StringOut auto& stringOut, std::string const& str)
-{
-	stringOut.write(str.c_str(), str.size());
-	return stringOut;
-}
-
-auto&
-operator<<(StringOut auto& stringOut, char const* str)
-{
-	stringOut.write(str, std::strlen(str));
-	return stringOut;
-}
-
-auto&
-operator<<(StringOut auto& stringOut, bool b)
-{
-	stringOut.write(b ? "true" : "false", 5 - b);
-	return stringOut;
-}
-
-auto&
-operator<<(StringOut auto& stringOut, Integer auto val)
-{
-	stringOut.toChars(val, 10);
-	return stringOut;
-}
-
-auto&
-operator<<(StringOut auto& stringOut, std::floating_point auto val)
-{
-	stringOut.toChars(val);
-	return stringOut;
 }
 
 }//namespace Stream::Format
