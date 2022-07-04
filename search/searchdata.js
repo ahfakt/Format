@@ -1,10 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "befiopst~",
-  1: "befiopst",
+  0: "bdefiopst~",
+  1: "bdefiopst",
   2: "s",
-  3: "~",
-  4: "s"
+  3: "~"
 };
 
 var indexSectionNames =
@@ -12,8 +11,7 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "namespaces",
-  3: "functions",
-  4: "concepts"
+  3: "functions"
 };
 
 var indexSectionLabels =
@@ -21,7 +19,6 @@ var indexSectionLabels =
   0: "All",
   1: "Classes",
   2: "Namespaces",
-  3: "Functions",
-  4: "Concepts"
+  3: "Functions"
 };
 

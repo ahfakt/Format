@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['socket_0',['Socket',['../../Stream/d1/db1/classStream_1_1Socket.html',1,'Stream']]],
-  ['socketinput_1',['SocketInput',['../../Stream/dc/d10/classStream_1_1SocketInput.html',1,'Stream']]],
-  ['socketoutput_2',['SocketOutput',['../../Stream/d5/d52/classStream_1_1SocketOutput.html',1,'Stream']]]
+  ['pipe_0',['Pipe',['../../Stream/d3/de2/classStream_1_1Pipe.html',1,'Stream']]],
+  ['pipeinput_1',['PipeInput',['../../Stream/df/d21/classStream_1_1PipeInput.html',1,'Stream']]],
+  ['pipeoutput_2',['PipeOutput',['../../Stream/df/dc1/classStream_1_1PipeOutput.html',1,'Stream']]]
 ];
