@@ -66,6 +66,10 @@ int main() {
 	test("base64_utf7.enc", Stream::Format::BaseMode::BASE64_UTF7,  length, maxChunkLength);
 	test("base64_imap.enc", Stream::Format::BaseMode::BASE64_IMAP,  length, maxChunkLength);
 
+	char buf[2048];
+	std::to_chars(buf, buf + 2048,);
+	std::cout << buf << '\n';
+
 	return 0;
 }
 

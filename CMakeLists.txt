@@ -10,9 +10,16 @@ set(DEPENDENCIES Stream)
 set(INC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INC_LIST
-		${INC_ROOT}/${PROJECT_NAME}/Base.h)
+		${INC_ROOT}/${PROJECT_NAME}/Base.h
+		${INC_ROOT}/${PROJECT_NAME}/Dot.h
+		${INC_ROOT}/${PROJECT_NAME}/String.h
+		)
 set(SRC_LIST
-		${SRC_ROOT}/Base.cpp)
+		${SRC_ROOT}/Base.cpp
+		${SRC_ROOT}/Dot.cpp
+		${SRC_ROOT}/String.cpp
+		${SRC_ROOT}/String.hpp
+		)
 
 
 add_library(${PROJECT_NAME} SHARED)

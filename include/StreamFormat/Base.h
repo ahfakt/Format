@@ -27,8 +27,8 @@ enum class BaseMode : short {
 	BASE64_URL_NPAD		= BASE64_NPAD | _ALPHABET2ND,
 	BASE64_UTF7			= BASE64_NPAD,
 	BASE64_IMAP			= BASE64_NPAD | _ALPHABET3RD,
-	//BASE64_PEM		= 64 | _PAD | _SPLITTED, // todo line 64
-	//BASE64_MIME		= 64 | _PAD | _SPLITTED | _IGNORE_INVALID, // todo line 76
+	//BASE64_PEM		= 64 | _PAD | _SPLITTED, // todo line length 64
+	//BASE64_MIME		= 64 | _PAD | _SPLITTED | _IGNORE_INVALID, // todo line length 76
 };
 
 /**

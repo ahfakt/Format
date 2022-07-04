@@ -769,9 +769,9 @@ make_error_code(Base::Exception::Code e) noexcept
 		{ return "Stream::Format::Base"; }
 
 		[[nodiscard]] std::string
-		message(int ev) const noexcept override
+		message(int e) const noexcept override
 		{
-			switch (ev) {
+			switch (e) {
 			case 1: return "Invalid Mode";
 			case 2: return "Invalid Character";
 			case 3: return "Invalid Final Block";
