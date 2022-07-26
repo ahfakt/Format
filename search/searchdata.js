@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "bdefiopst~",
   1: "bdefiopst",
   2: "s",
-  3: "~"
+  3: "o~"
 };
 
 var indexSectionNames =

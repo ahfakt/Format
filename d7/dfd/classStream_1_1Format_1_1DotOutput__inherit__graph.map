@@ -1,7 +1,7 @@
 <map id="Stream::Format::DotOutput" name="Stream::Format::DotOutput">
-<area shape="rect" id="node1" title=" " alt="" coords="119,595,481,701"/>
-<area shape="rect" id="node6" href="$d5/d5f/classStream_1_1Format_1_1Dot.html" title=" " alt="" coords="229,749,371,827"/>
-<area shape="rect" id="node2" href="$d8/d50/classStream_1_1Format_1_1StringOutput.html" title=" " alt="" coords="5,381,595,547"/>
+<area shape="rect" id="node1" title=" " alt="" coords="119,668,481,775"/>
+<area shape="rect" id="node6" href="$d5/d5f/classStream_1_1Format_1_1Dot.html" title=" " alt="" coords="229,823,371,900"/>
+<area shape="rect" id="node2" href="$d8/d50/classStream_1_1Format_1_1StringOutput.html" title=" " alt="" coords="5,381,595,620"/>
 <area shape="rect" id="node3" href="/home/null/doc/Stream/tag.xml$da/d65/classStream_1_1BufferOutput" title=" " alt="" coords="227,256,373,333"/>
 <area shape="rect" id="node4" href="/home/null/doc/Stream/tag.xml$d0/d57/classStream_1_1OutputFilter" title=" " alt="" coords="230,131,370,208"/>
 <area shape="rect" id="node5" href="/home/null/doc/Stream/tag.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="245,5,355,83"/>
