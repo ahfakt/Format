@@ -1,9 +1,9 @@
 <map id="Stream::Format::Base" name="Stream::Format::Base">
 <area shape="rect" id="node1" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="89,580,896,760"/>
 <area shape="rect" id="node2" href="$d7/d8f/classStream_1_1Format_1_1BaseDecode.html" title="Stream::Input Base decoder." alt="" coords="5,381,497,532"/>
-<area shape="rect" id="node3" href="/home/null/doc/Stream/tag.xml$d2/dc2/classStream_1_1BufferInput" title=" " alt="" coords="155,256,348,333"/>
-<area shape="rect" id="node4" href="/home/null/doc/Stream/tag.xml$d3/d2f/classStream_1_1InputFilter" title=" " alt="" coords="155,131,348,208"/>
-<area shape="rect" id="node5" href="/home/null/doc/Stream/tag.xml$d7/d83/classStream_1_1Input" title=" " alt="" coords="155,5,348,83"/>
+<area shape="rect" id="node3" href="/home/null/doc/Stream/tag.xml$d2/dc2/classStream_1_1BufferInput" title=" " alt="" coords="184,256,319,333"/>
+<area shape="rect" id="node4" href="/home/null/doc/Stream/tag.xml$d3/d2f/classStream_1_1InputFilter" title=" " alt="" coords="186,131,317,208"/>
+<area shape="rect" id="node5" href="/home/null/doc/Stream/tag.xml$d7/d83/classStream_1_1Input" title=" " alt="" coords="201,5,302,83"/>
 <area shape="rect" id="node6" href="$d5/d69/classStream_1_1Format_1_1BaseEncode.html" title="Stream::Output Base encoder." alt="" coords="521,381,947,532"/>
 <area shape="rect" id="node7" href="/home/null/doc/Stream/tag.xml$da/d65/classStream_1_1BufferOutput" title=" " alt="" coords="661,256,807,333"/>
 <area shape="rect" id="node8" href="/home/null/doc/Stream/tag.xml$d0/d57/classStream_1_1OutputFilter" title=" " alt="" coords="664,131,804,208"/>
