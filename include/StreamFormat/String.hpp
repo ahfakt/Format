@@ -1,7 +1,7 @@
-#ifndef STREAM_FORMAT_STRING_H
-#define	STREAM_FORMAT_STRING_H
+#ifndef STREAM_FORMAT_STRING_HPP
+#define	STREAM_FORMAT_STRING_HPP
 
-#include "Stream/Buffer.h"
+#include "Stream/Buffer.hpp"
 #include <charconv>
 
 namespace Stream::Format {
@@ -27,7 +27,7 @@ class StringInput : public BufferInput {
 public:
 	struct Exception : Input::Exception
 	{ using Input::Exception::Exception; };
-};//class StringInput
+};//class Stream::Format::StringInput
 
 class StringOutput : public BufferOutput {
 public:
@@ -66,15 +66,15 @@ public:
 
 	StringOutput&
 	toChars(std::floating_point auto val, std::chars_format fmt, std::size_t precision);
-};//class StringOutput
+};//class Stream::Format::StringOutput
 
 class String : public StringInput, public StringOutput {
 public:
 	struct Exception {
 		enum class Code : int {
 		};
-	};//struct Exception
-};//class String
+	};//struct Stream::Format::String::Exception
+};//class Stream::Format::String
 
 std::error_code
 make_error_code(String::Exception::Code e) noexcept;
@@ -88,6 +88,6 @@ struct is_error_code_enum<Stream::Format::String::Exception::Code> : true_type {
 
 }//namespace std
 
-#include "../src/String.hpp"
+#include "../../src/String.tpp"
 
-#endif //STREAM_FORMAT_STRING_H
+#endif //STREAM_FORMAT_STRING_HPP

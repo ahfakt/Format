@@ -1,7 +1,7 @@
-#ifndef STREAM_FORMAT_BASE_H
-#define	STREAM_FORMAT_BASE_H
+#ifndef STREAM_FORMAT_BASE_HPP
+#define	STREAM_FORMAT_BASE_HPP
 
-#include "Stream/Buffer.h"
+#include "Stream/Buffer.hpp"
 #include <memory>
 
 namespace Stream::Format {
@@ -33,7 +33,7 @@ enum class BaseMode : short {
 
 /**
  * @brief	Stream::Input %Base decoder
- * @class	BaseDecode Base.h "StreamFormat/Base.h"
+ * @class	BaseDecode Base.hpp "StreamFormat/Base.hpp"
  */
 class BaseDecode : public BufferInput {
 	std::unique_ptr<unsigned char> mCtx;
@@ -69,11 +69,11 @@ public:
 
 	void
 	finalizeDecodingWhenNoData(bool on = true);
-};//class BaseDecode
+};//class Stream::Format::BaseDecode
 
 /**
  * @brief	Stream::Output %Base encoder
- * @class	BaseEncode Base.h "StreamFormat/Base.h"
+ * @class	BaseEncode Base.hpp "StreamFormat/Base.hpp"
  * @see		https://tools.ietf.org/html/rfc4648
  */
 class BaseEncode : public BufferOutput {
@@ -105,11 +105,11 @@ public:
 
 	void
 	finalizeEncoding();
-};//class BaseEncode
+};//class Stream::Format::BaseEncode
 
 /**
  * @brief Stream::Input / Stream::Output %Base decoder and encoder
- * @class Base Base.h "StreamFormat/Base.h"
+ * @class Base Base.hpp "StreamFormat/Base.hpp"
  */
 class Base : public BaseDecode, public BaseEncode {
 public:
@@ -119,7 +119,7 @@ public:
 			InvalidCharacter = 2,
 			InvalidFinalBlock = 3
 		};
-	};//struct Exception
+	};//struct Stream::Format::Base::Exception
 
 	Base(BaseMode decMode, BaseMode encMode,
 			std::size_t decBuffInitialSize = 0, std::size_t encBuffInitialSize = 0);
@@ -144,7 +144,7 @@ public:
 
 	Base(BaseMode mode,
 			void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize);
-};//class Base
+};//class Stream::Format::Base
 
 void
 swap(Base& a, Base& b) noexcept;
@@ -161,4 +161,4 @@ struct is_error_code_enum<Stream::Format::Base::Exception::Code> : true_type {};
 
 }//namespace std
 
-#endif //STREAM_FORMAT_BASE_H
+#endif //STREAM_FORMAT_BASE_HPP

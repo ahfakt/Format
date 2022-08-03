@@ -1,8 +1,8 @@
 #include <cassert>
 #include <iostream>
-#include "Stream/File.h"
-#include "StreamFormat/Base.h"
-#include "Util.h"
+#include "Stream/File.hpp"
+#include "StreamFormat/Base.hpp"
+#include "Util"
 
 std::vector<std::byte>
 testEncode(char const* fileName, Stream::Format::BaseMode mode, int length, int maxChunkLength)

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14.0)
-project(StreamFormat VERSION 0.1 DESCRIPTION "")
+project(StreamFormat VERSION 0.1 DESCRIPTION "Format related operations on streams")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE})
@@ -10,15 +10,15 @@ set(DEPENDENCIES Stream)
 set(INC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INC_LIST
-		${INC_ROOT}/${PROJECT_NAME}/Base.h
-		${INC_ROOT}/${PROJECT_NAME}/Dot.h
-		${INC_ROOT}/${PROJECT_NAME}/String.h
+		${INC_ROOT}/${PROJECT_NAME}/Base.hpp
+		${INC_ROOT}/${PROJECT_NAME}/Dot.hpp
+		${INC_ROOT}/${PROJECT_NAME}/String.hpp
 		)
 set(SRC_LIST
 		${SRC_ROOT}/Base.cpp
 		${SRC_ROOT}/Dot.cpp
 		${SRC_ROOT}/String.cpp
-		${SRC_ROOT}/String.hpp
+		${SRC_ROOT}/String.tpp
 		)
 
 
@@ -48,9 +48,9 @@ endif()
 if ((DEFINED DOC_ROOT) AND (NOT ${DOC_ROOT} STREQUAL ""))
 	find_package(Doxygen)
 	if (DOXYGEN_FOUND)
-		set(DOXYGEN_IN_CFG ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.in.cfg)
+		set(DOXYGEN_IN_CFG ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.cfg)
 		set(DOXYGEN_OUTPUT_DIR ${DOC_ROOT}/${PROJECT_NAME})
-		set(DOXYGEN_CFG ${DOXYGEN_OUTPUT_DIR}/doxygen.cfg)
+		set(DOXYGEN_CFG ${DOC_ROOT}/.doxy/${PROJECT_NAME}.cfg)
 
 		configure_file(${DOXYGEN_IN_CFG} ${DOXYGEN_CFG} @ONLY)
 		message("Doxygen configuration ${DOXYGEN_CFG} generated.")

@@ -1,4 +1,4 @@
-#include "StreamFormat/String.h"
+#include "StreamFormat/String.hpp"
 #include <iostream>
 #include <charconv>
 #include <numeric>

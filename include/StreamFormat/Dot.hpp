@@ -1,7 +1,7 @@
-#ifndef STREAM_FORMAT_DOT_H
-#define	STREAM_FORMAT_DOT_H
+#ifndef STREAM_FORMAT_DOT_HPP
+#define	STREAM_FORMAT_DOT_HPP
 
-#include "StreamFormat/String.h"
+#include "String.hpp"
 
 namespace Stream::Format {
 
@@ -15,14 +15,14 @@ public:
 	DotOutput(void* sinkBuff, std::size_t sinkSize) noexcept;
 
 	DotOutput(DotOutput&& other) noexcept;
-};
+};//class Stream::Format::DotOutput
 
 class Dot : public DotOutput {
 public:
 	struct Exception {
 		enum class Code : int {};
-	};//struct Exception
-};//class Dot
+	};//struct Stream::Format::Dot::Exception
+};//class Stream::Format::Dot
 
 std::error_code
 make_error_code(Dot::Exception::Code e) noexcept;
@@ -36,4 +36,4 @@ struct is_error_code_enum<Stream::Format::Dot::Exception::Code> : true_type {};
 
 }//namespace std
 
-#endif //STREAM_FORMAT_DOT_H
+#endif //STREAM_FORMAT_DOT_HPP

@@ -1,4 +1,4 @@
-#include "StreamFormat/Dot.h"
+#include "StreamFormat/Dot.hpp"
 
 namespace Stream::Format {
 
