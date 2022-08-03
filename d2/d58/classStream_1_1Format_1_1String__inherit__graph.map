@@ -1,11 +1,11 @@
 <map id="Stream::Format::String" name="Stream::Format::String">
 <area shape="rect" id="node1" title=" " alt="" coords="225,668,380,745"/>
 <area shape="rect" id="node2" href="$d1/d9f/classStream_1_1Format_1_1StringInput.html" title=" " alt="" coords="5,462,189,539"/>
-<area shape="rect" id="node3" href="/home/null/doc/Stream/tag.xml$d2/dc2/classStream_1_1BufferInput" title=" " alt="" coords="30,256,165,333"/>
-<area shape="rect" id="node4" href="/home/null/doc/Stream/tag.xml$d3/d2f/classStream_1_1InputFilter" title=" " alt="" coords="32,131,163,208"/>
-<area shape="rect" id="node5" href="/home/null/doc/Stream/tag.xml$d7/d83/classStream_1_1Input" title=" " alt="" coords="47,5,148,83"/>
+<area shape="rect" id="node3" href="/home/null/doc/.doxy/Stream.xml$d2/dc2/classStream_1_1BufferInput" title=" " alt="" coords="30,256,165,333"/>
+<area shape="rect" id="node4" href="/home/null/doc/.doxy/Stream.xml$d3/d2f/classStream_1_1InputFilter" title=" " alt="" coords="32,131,163,208"/>
+<area shape="rect" id="node5" href="/home/null/doc/.doxy/Stream.xml$d7/d83/classStream_1_1Input" title=" " alt="" coords="47,5,148,83"/>
 <area shape="rect" id="node6" href="$d8/d50/classStream_1_1Format_1_1StringOutput.html" title=" " alt="" coords="213,381,803,620"/>
-<area shape="rect" id="node7" href="/home/null/doc/Stream/tag.xml$da/d65/classStream_1_1BufferOutput" title=" " alt="" coords="435,256,581,333"/>
-<area shape="rect" id="node8" href="/home/null/doc/Stream/tag.xml$d0/d57/classStream_1_1OutputFilter" title=" " alt="" coords="438,131,578,208"/>
-<area shape="rect" id="node9" href="/home/null/doc/Stream/tag.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="453,5,563,83"/>
+<area shape="rect" id="node7" href="/home/null/doc/.doxy/Stream.xml$da/d65/classStream_1_1BufferOutput" title=" " alt="" coords="435,256,581,333"/>
+<area shape="rect" id="node8" href="/home/null/doc/.doxy/Stream.xml$d0/d57/classStream_1_1OutputFilter" title=" " alt="" coords="438,131,578,208"/>
+<area shape="rect" id="node9" href="/home/null/doc/.doxy/Stream.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="453,5,563,83"/>
 </map>
