@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['fileinput_0',['FileInput',['../../Stream/d6/de1/structStream_1_1FileInput_1_1Exception.html',1,'Stream']]],
-  ['fileoutput_1',['FileOutput',['../../Stream/d3/d8a/structStream_1_1FileOutput_1_1Exception.html',1,'Stream']]],
-  ['input_2',['Input',['../../Stream/d2/d85/structStream_1_1Input_1_1Exception.html',1,'Stream']]],
-  ['output_3',['Output',['../../Stream/d5/d2d/structStream_1_1Output_1_1Exception.html',1,'Stream']]],
-  ['pipeinput_4',['PipeInput',['../../Stream/dd/d2e/structStream_1_1PipeInput_1_1Exception.html',1,'Stream']]],
-  ['pipeoutput_5',['PipeOutput',['../../Stream/d5/d3a/structStream_1_1PipeOutput_1_1Exception.html',1,'Stream']]],
-  ['socket_6',['Socket',['../../Stream/d1/db1/classStream_1_1Socket.html',1,'Stream']]],
-  ['socketinput_7',['SocketInput',['../../Stream/dc/d10/classStream_1_1SocketInput.html',1,'Stream::SocketInput'],['../../Stream/da/d8a/structStream_1_1SocketInput_1_1Exception.html',1,'Stream::SocketInput']]],
-  ['socketoutput_8',['SocketOutput',['../../Stream/d5/d52/classStream_1_1SocketOutput.html',1,'Stream::SocketOutput'],['../../Stream/dc/def/structStream_1_1SocketOutput_1_1Exception.html',1,'Stream::SocketOutput']]],
-  ['string_9',['String',['../dd/d7a/classStream_1_1Format_1_1String.html',1,'Stream::Format']]],
-  ['stringinput_10',['StringInput',['../d1/d9f/classStream_1_1Format_1_1StringInput.html',1,'Stream::Format']]],
-  ['stringoutput_11',['StringOutput',['../d8/d50/classStream_1_1Format_1_1StringOutput.html',1,'Stream::Format']]]
+  ['inet_0',['Inet',['../../Stream/d4/dc5/structStream_1_1Socket_1_1Inet.html#ab1f81cf1342aba0bd14270e2cb5c7c4d',1,'Stream::Socket::Inet::Inet(char const *host, std::uint16_t port)'],['../../Stream/d4/dc5/structStream_1_1Socket_1_1Inet.html#afc3e3adbb3249c53d207ba574b35888f',1,'Stream::Socket::Inet::Inet(std::uint32_t address, std::uint16_t port) noexcept'],['../../Stream/d4/dc5/structStream_1_1Socket_1_1Inet.html',1,'Stream::Socket::Inet']]],
+  ['input_1',['Input',['../../Stream/d7/d83/classStream_1_1Input.html',1,'Stream']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3abuffer_3a_3aexception_3a_3acode_20_3e_2',['is_error_code_enum&lt; Stream::Buffer::Exception::Code &gt;',['../../Stream/d5/dba/structstd_1_1is__error__code__enum_3_01Stream_1_1Buffer_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3aformat_3a_3abase_3a_3aexception_3a_3acode_20_3e_3',['is_error_code_enum&lt; Stream::Format::Base::Exception::Code &gt;',['../d9/d3a/structstd_1_1is__error__code__enum_3_01Stream_1_1Format_1_1Base_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3aformat_3a_3adot_3a_3aexception_3a_3acode_20_3e_4',['is_error_code_enum&lt; Stream::Format::Dot::Exception::Code &gt;',['../dc/db8/structstd_1_1is__error__code__enum_3_01Stream_1_1Format_1_1Dot_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3aformat_3a_3astring_3a_3aexception_3a_3acode_20_3e_5',['is_error_code_enum&lt; Stream::Format::String::Exception::Code &gt;',['../da/d0f/structstd_1_1is__error__code__enum_3_01Stream_1_1Format_1_1String_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3ainput_3a_3aexception_3a_3acode_20_3e_6',['is_error_code_enum&lt; Stream::Input::Exception::Code &gt;',['../../Stream/dd/d49/structstd_1_1is__error__code__enum_3_01Stream_1_1Input_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3aoutput_3a_3aexception_3a_3acode_20_3e_7',['is_error_code_enum&lt; Stream::Output::Exception::Code &gt;',['../../Stream/d1/d30/structstd_1_1is__error__code__enum_3_01Stream_1_1Output_1_1Exception_1_1Code_01_4.html',1,'std']]],
+  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3asocket_3a_3ainet_3a_3aexception_3a_3acode_20_3e_8',['is_error_code_enum&lt; Stream::Socket::Inet::Exception::Code &gt;',['../../Stream/d5/da1/structstd_1_1is__error__code__enum_3_01Stream_1_1Socket_1_1Inet_1_1Exception_1_1Code_01_4.html',1,'std']]]
 ];
