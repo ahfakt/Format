@@ -1,6 +1,12 @@
 #include "StreamFormat/String.hpp"
+#include <climits>
 
 namespace Stream::Format {
+
+template <Char C>
+StringOutput&
+StringOutput::operator<<(std::basic_string<C> const& str)
+{ return reinterpret_cast<StringOutput&>(write(str.data(), str.size() * sizeof(C))); }
 
 template <typename F>
 constexpr int max_exponent_digits10 = 0;
@@ -44,21 +50,25 @@ StringOutput::operator<<(std::floating_point auto val)
 {
 	constexpr std::size_t max = std::min(max_fixed_length<decltype(val)>, max_scientific_length<decltype(val)>);
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val);
-	if (r.ec != std::errc())
-		throw Exception(std::make_error_code(r.ec));
-	mPut = reinterpret_cast<std::byte*>(r.ptr);
-	return *this;
+	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val);
+	if (r.ec == std::errc()) {
+		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
+		return *this;
+	}
+	throw Exception(std::make_error_code(r.ec));
 }
 
 StringOutput&
 StringOutput::toChars(Integer auto val, int base)
 {
-	constexpr std::size_t max = sizeof(val) * 8;
+	constexpr std::size_t max = 1 + 8 * sizeof val;
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val, base);
-	mPut = reinterpret_cast<std::byte*>(r.ptr);
-	return *this;
+	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, base);
+	if (r.ec == std::errc()) {
+		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
+		return *this;
+	}
+	throw Exception(std::make_error_code(r.ec));
 }
 
 StringOutput&
@@ -68,11 +78,12 @@ StringOutput::toChars(std::floating_point auto val, std::chars_format fmt)
 			: (fmt == std::chars_format::hex ? max_hex_length<decltype(val)>
 			: max_scientific_length<decltype(val)>);
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val, fmt);
-	if (r.ec != std::errc())
-		throw Exception(std::make_error_code(r.ec));
-	mPut = reinterpret_cast<std::byte*>(r.ptr);
-	return *this;
+	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, fmt);
+	if (r.ec == std::errc()) {
+		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
+		return *this;
+	}
+	throw Exception(std::make_error_code(r.ec));
 }
 
 StringOutput&
@@ -83,11 +94,12 @@ StringOutput::toChars(std::floating_point auto val, std::chars_format fmt, std::
 			: (fmt == std::chars_format::hex ? 2 + max_exponent_digits2<decltype(val)>
 			: 2 + max_exponent_digits10<decltype(val)>);
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(mPut), reinterpret_cast<char*>(mPut + max), val, fmt, precision);
-	if (r.ec != std::errc())
-		throw Exception(std::make_error_code(r.ec));
-	mPut = reinterpret_cast<std::byte*>(r.ptr);
-	return *this;
+	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, fmt, precision);
+	if (r.ec == std::errc()) {
+		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
+		return *this;
+	}
+	throw Exception(std::make_error_code(r.ec));
 }
 
 }//namespace Stream::Format

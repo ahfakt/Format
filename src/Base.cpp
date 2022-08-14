@@ -72,7 +72,7 @@ bool
 BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 {
 	int r = 0;
-	if (ctx->mode & static_cast<short>(BaseMode::_PAD)) {
+	if (ctx->mode & static_cast<short>(BaseMode::B_PAD)) {
 		r = static_cast<int>(ctx->curr - ctx->beg + inl) & (ctx->encodedLength - 1);
 		if (r > 2) r = r - 2;
 		else if (r == 0) r = ctx->encodedLength - 2;
@@ -317,14 +317,8 @@ Base16DecodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 		*outl = 0;
 }
 
-BaseDecode::BaseDecode(BaseMode mode, std::size_t initialBuffSize)
-		: BufferInput(initialBuffSize)
-		, mCtx(new unsigned char[sizeof(BaseContext)])
-{ init(static_cast<short>(mode)); }
-
-BaseDecode::BaseDecode(BaseMode mode, void const* sourceBuff, std::size_t sourceSize)
-		: BufferInput(sourceBuff, sourceSize)
-		, mCtx(new unsigned char[sizeof(BaseContext)])
+BaseDecode::BaseDecode(BaseMode mode)
+		: mCtx(new unsigned char[sizeof(BaseContext)])
 { init(static_cast<short>(mode)); }
 
 BaseDecode::BaseDecode(BaseDecode&& other) noexcept
@@ -333,7 +327,7 @@ BaseDecode::BaseDecode(BaseDecode&& other) noexcept
 void
 swap(BaseDecode& a, BaseDecode& b) noexcept
 {
-	swap(static_cast<BufferInput&>(a), static_cast<BufferInput&>(b));
+	swap(static_cast<TransformInput&>(a), static_cast<TransformInput&>(b));
 	std::swap(a.mCtx, b.mCtx);
 	std::swap(a.mTempBeg, b.mTempBeg);
 	std::swap(a.mTempCurr, b.mTempCurr);
@@ -344,12 +338,7 @@ swap(BaseDecode& a, BaseDecode& b) noexcept
 BaseDecode&
 BaseDecode::operator=(BaseDecode&& other) noexcept
 {
-	static_cast<BufferInput&>(*this) = static_cast<BufferInput&&>(other);
-	std::swap(mCtx, other.mCtx);
-	std::swap(mTempBeg, other.mTempBeg);
-	std::swap(mTempCurr, other.mTempCurr);
-	std::swap(mTempEnd, other.mTempEnd);
-	std::swap(mFinalizeWhenNoData, other.mFinalizeWhenNoData);
+	swap(*this, other);
 	return *this;
 }
 
@@ -359,13 +348,13 @@ BaseDecode::init(short mode)
 	auto* ctx = reinterpret_cast<BaseContext*>(mCtx.get());
 	if (mode & 64) {
 		mTempBeg.reset(new unsigned char[ctx->rawLength = 3]);
-		ctx->table = Base64DecodeTable[mode & static_cast<short>(BaseMode::_ALPHABET_MASK)];
+		ctx->table = Base64DecodeTable[mode & static_cast<short>(BaseMode::B_ALPHABET_MASK)];
 		ctx->update = Base64DecodeUpdate;
 		ctx->final = Base64DecodeFinal;
 		ctx->end = ctx->beg + (ctx->encodedLength = 4);
 	} else if (mode & 32) {
 		mTempBeg.reset(new unsigned char[ctx->rawLength = 5]);
-		ctx->table = Base32DecodeTable[mode & static_cast<short>(BaseMode::_ALPHABET_MASK)];
+		ctx->table = Base32DecodeTable[mode & static_cast<short>(BaseMode::B_ALPHABET_MASK)];
 		ctx->update = Base32DecodeUpdate;
 		ctx->final = Base32DecodeFinal;
 		ctx->end = ctx->beg + (ctx->encodedLength = 8);
@@ -408,7 +397,7 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 
 	if (mFinalizeWhenNoData) {
 		try {
-			size = provideData(size);
+			size = provideSomeData(size);
 		} catch (Input::Exception& exc) {
 			if (exc.code() == std::make_error_code(static_cast<std::errc>(ENODATA))) {
 				finalizeDecoding();
@@ -417,17 +406,17 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 			throw;
 		}
 	} else
-		size = provideData(size);
+		size = provideSomeData(size);
 
 	int outl;
 	if (ctx->update(ctx, reinterpret_cast<unsigned char*>(dest), &outl,
-			reinterpret_cast<unsigned char const*>(mGet), static_cast<int>(size))) {
-		mGet += size;
+			reinterpret_cast<unsigned char const*>(getData()), static_cast<int>(size))) {
+		advanceData(size);
 		finalizeDecoding();
 		return outl;
 	}
 
-	mGet += size;
+	advanceData(size);
 	if (dest == reinterpret_cast<std::byte*>(mTempBeg.get())) {
 		mTempEnd = (mTempCurr = mTempBeg.get()) + outl;
 		return 0; // try again to read from mTemp
@@ -512,7 +501,7 @@ Base64EncodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 			*outl = 3;
 		}
 
-		if (ctx->mode & static_cast<short>(BaseMode::_PAD))
+		if (ctx->mode & static_cast<short>(BaseMode::B_PAD))
 			for (out += *outl; *outl < ctx->encodedLength; ++out, ++*outl)
 				*out = '=';
 	}
@@ -591,7 +580,7 @@ Base32EncodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 			}
 		}
 
-		if (ctx->mode & static_cast<short>(BaseMode::_PAD))
+		if (ctx->mode & static_cast<short>(BaseMode::B_PAD))
 			for (out += *outl; *outl < ctx->encodedLength; ++out, ++*outl)
 				*out = '=';
 	}
@@ -611,14 +600,8 @@ Base16EncodeUpdate(BaseContext* ctx, unsigned char* out, int* outl, unsigned cha
 	return false;
 }
 
-BaseEncode::BaseEncode(BaseMode mode, std::size_t initialBuffSize)
-		: BufferOutput(initialBuffSize)
-		, mCtx(new unsigned char[sizeof(BaseContext)])
-{ init(static_cast<short>(mode)); }
-
-BaseEncode::BaseEncode(BaseMode mode, void* sinkBuff, std::size_t sinkSize)
-		: BufferOutput(sinkBuff, sinkSize)
-		, mCtx(new unsigned char[sizeof(BaseContext)])
+BaseEncode::BaseEncode(BaseMode mode)
+		: mCtx(new unsigned char[sizeof(BaseContext)])
 { init(static_cast<short>(mode)); }
 
 BaseEncode::BaseEncode(BaseEncode&& other) noexcept
@@ -627,15 +610,14 @@ BaseEncode::BaseEncode(BaseEncode&& other) noexcept
 void
 swap(BaseEncode& a, BaseEncode& b) noexcept
 {
-	swap(static_cast<BufferOutput&>(a), static_cast<BufferOutput&>(b));
+	swap(static_cast<TransformOutput&>(a), static_cast<TransformOutput&>(b));
 	std::swap(a.mCtx, b.mCtx);
 }
 
 BaseEncode&
 BaseEncode::operator=(BaseEncode&& other) noexcept
 {
-	static_cast<BufferOutput&>(*this) = static_cast<BufferOutput&&>(other);
-	std::swap(mCtx, other.mCtx);
+	swap(*this, other);
 	return *this;
 }
 
@@ -644,13 +626,13 @@ BaseEncode::init(short mode)
 {
 	auto* ctx = reinterpret_cast<BaseContext*>(mCtx.get());
 	if (mode & 64) {
-		ctx->table = Base64EncodeTable[mode & static_cast<short>(BaseMode::_ALPHABET_MASK)];
+		ctx->table = Base64EncodeTable[mode & static_cast<short>(BaseMode::B_ALPHABET_MASK)];
 		ctx->update = Base64EncodeUpdate;
 		ctx->final = Base64EncodeFinal;
 		ctx->encodedLength = 4;
 		ctx->end = ctx->beg + (ctx->rawLength = 3);
 	} else if (mode & 32) {
-		ctx->table = Base32EncodeTable[mode & static_cast<short>(BaseMode::_ALPHABET_MASK)];
+		ctx->table = Base32EncodeTable[mode & static_cast<short>(BaseMode::B_ALPHABET_MASK)];
 		ctx->update = Base32EncodeUpdate;
 		ctx->final = Base32EncodeFinal;
 		ctx->encodedLength = 8;
@@ -679,9 +661,9 @@ BaseEncode::writeBytes(std::byte const* src, std::size_t size)
 	provideSpace(((size - 1) / ctx->rawLength + 1) * ctx->encodedLength);
 
 	int outl;
-	ctx->update(ctx, reinterpret_cast<unsigned char*>(mPut), &outl,
+	ctx->update(ctx, reinterpret_cast<unsigned char*>(getSpace()), &outl,
 			reinterpret_cast<unsigned char const*>(src), static_cast<int>(size));
-	mPut += outl;
+	advanceSpace(outl);
 	return size;
 }
 
@@ -693,8 +675,8 @@ BaseEncode::finalizeEncoding()
 		if (ctx->final) {
 			provideSpace(ctx->encodedLength);
 			int outl;
-			ctx->final(ctx, reinterpret_cast<unsigned char*>(mPut), &outl);
-			mPut += outl;
+			ctx->final(ctx, reinterpret_cast<unsigned char*>(getSpace()), &outl);
+			advanceSpace(outl);
 		}
 		ctx->update = nullptr;
 	}
@@ -709,48 +691,13 @@ BaseEncode::~BaseEncode()
 	}
 }
 
-Base::Base(BaseMode decMode, BaseMode encMode,
-		std::size_t decBuffInitialSize, std::size_t encBuffInitialSize)
-		: BaseDecode(decMode, decBuffInitialSize)
-		, BaseEncode(encMode, encBuffInitialSize)
+Base::Base(BaseMode decMode, BaseMode encMode)
+		: BaseDecode(decMode)
+		, BaseEncode(encMode)
 {}
 
-Base::Base(BaseMode decMode, BaseMode encMode,
-		std::size_t decBuffInitialSize, void* sinkBuff, std::size_t sinkSize)
-		: BaseDecode(decMode, decBuffInitialSize)
-		, BaseEncode(encMode, sinkBuff, sinkSize)
-{}
-
-Base::Base(BaseMode decMode, BaseMode encMode,
-		void const* sourceBuff, std::size_t sourceSize, std::size_t encBuffInitialSize)
-		: BaseDecode(decMode, sourceBuff, sourceSize)
-		, BaseEncode(encMode, encBuffInitialSize)
-{}
-
-Base::Base(BaseMode decMode, BaseMode encMode,
-		void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize)
-		: BaseDecode(decMode, sourceBuff, sourceSize)
-		, BaseEncode(encMode, sinkBuff, sinkSize)
-{}
-
-Base::Base(BaseMode mode,
-		std::size_t decBuffInitialSize, std::size_t encBuffInitialSize)
-		: Base(mode, mode, decBuffInitialSize, encBuffInitialSize)
-{}
-
-Base::Base(BaseMode mode,
-		std::size_t decBuffInitialSize, void* sinkBuff, std::size_t sinkSize)
-		: Base(mode, mode, decBuffInitialSize, sinkBuff, sinkSize)
-{}
-
-Base::Base(BaseMode mode,
-		void const* sourceBuff, std::size_t sourceSize, std::size_t encBuffInitialSize)
-		: Base(mode, mode, sourceBuff, sourceSize, encBuffInitialSize)
-{}
-
-Base::Base(BaseMode mode,
-		void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize)
-		: Base(mode, mode, sourceBuff, sourceSize, sinkBuff, sinkSize)
+Base::Base(BaseMode mode)
+		: Base(mode, mode)
 {}
 
 void

@@ -15,10 +15,10 @@ set(INC_LIST
 		${INC_ROOT}/${PROJECT_NAME}/String.hpp
 		)
 set(SRC_LIST
+		${SRC_ROOT}/${PROJECT_NAME}/String.tpp
 		${SRC_ROOT}/Base.cpp
 		${SRC_ROOT}/Dot.cpp
 		${SRC_ROOT}/String.cpp
-		${SRC_ROOT}/String.tpp
 		)
 
 

@@ -10,9 +10,7 @@ public:
 	struct Exception : Output::Exception
 	{ using Output::Exception::Exception; };
 
-	explicit DotOutput(std::size_t buffInitialSize = 0);
-
-	DotOutput(void* sinkBuff, std::size_t sinkSize) noexcept;
+	DotOutput() noexcept = default;
 
 	DotOutput(DotOutput&& other) noexcept;
 };//class Stream::Format::DotOutput

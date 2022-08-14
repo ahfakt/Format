@@ -2,14 +2,6 @@
 
 namespace Stream::Format {
 
-DotOutput::DotOutput(std::size_t buffInitialSize)
-		: StringOutput(buffInitialSize)
-{}
-
-DotOutput::DotOutput(void* sinkBuff, std::size_t sinkSize) noexcept
-		: StringOutput(sinkBuff, sinkSize)
-{}
-
 DotOutput::DotOutput(DotOutput&& other) noexcept
 { swap(*this, other); }
 

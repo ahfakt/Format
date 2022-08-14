@@ -2,24 +2,8 @@
 
 namespace Stream::Format {
 
-StringOutput::StringOutput(std::size_t buffInitialSize)
-		: BufferOutput(buffInitialSize)
-{}
-
-StringOutput::StringOutput(void* sinkBuff, std::size_t sinkSize) noexcept
-		: BufferOutput(sinkBuff, sinkSize)
-{}
-
 StringOutput::StringOutput(StringOutput&& other) noexcept
 { swap(*this, other); }
-
-StringOutput&
-StringOutput::operator<<(std::string const& str)
-{ return reinterpret_cast<StringOutput&>(write(str.c_str(), str.size())); }
-
-StringOutput&
-StringOutput::operator<<(char const* str)
-{ return reinterpret_cast<StringOutput&>(write(str, std::strlen(str))); }
 
 StringOutput&
 StringOutput::operator<<(bool b)

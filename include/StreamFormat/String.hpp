@@ -1,50 +1,29 @@
 #ifndef STREAM_FORMAT_STRING_HPP
 #define	STREAM_FORMAT_STRING_HPP
 
-#include "Stream/Buffer.hpp"
+#include <Stream/Transform.hpp>
 #include <charconv>
 
 namespace Stream::Format {
 
-template <typename I>
-concept SignedInt = std::is_same_v<I, signed char>
-	|| std::is_same_v<I, signed short>
-	|| std::is_same_v<I, signed int>
-	|| std::is_same_v<I, signed long>
-	|| std::is_same_v<I, signed long long>;
-
-template <typename I>
-concept UnsignedInt = std::is_same_v<I, unsigned char>
-	|| std::is_same_v<I, unsigned short>
-	|| std::is_same_v<I, unsigned int>
-	|| std::is_same_v<I, unsigned long>
-	|| std::is_same_v<I, unsigned long long>;
-
-template <typename I>
-concept Integer = SignedInt<I> || UnsignedInt<I>;
-
-class StringInput : public BufferInput {
+class StringInput : public TransformInput {
 public:
 	struct Exception : Input::Exception
 	{ using Input::Exception::Exception; };
 };//class Stream::Format::StringInput
 
-class StringOutput : public BufferOutput {
+class StringOutput : public TransformOutput {
 public:
 	struct Exception : Output::Exception
 	{ using Output::Exception::Exception; };
 
-	explicit StringOutput(std::size_t buffInitialSize = 0);
-
-	StringOutput(void* sinkBuff, std::size_t sinkSize) noexcept;
+	StringOutput() noexcept = default;
 
 	StringOutput(StringOutput&& other) noexcept;
 
+	template <Char C>
 	StringOutput&
-	operator<<(std::string const& str);
-
-	StringOutput&
-	operator<<(char const* str);
+	operator<<(std::basic_string<C> const& str);
 
 	StringOutput&
 	operator<<(void const* ptr);
@@ -88,6 +67,6 @@ struct is_error_code_enum<Stream::Format::String::Exception::Code> : true_type {
 
 }//namespace std
 
-#include "../../src/String.tpp"
+#include "../../src/StreamFormat/String.tpp"
 
 #endif //STREAM_FORMAT_STRING_HPP

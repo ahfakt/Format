@@ -1,41 +1,41 @@
 #ifndef STREAM_FORMAT_BASE_HPP
 #define	STREAM_FORMAT_BASE_HPP
 
-#include "Stream/Buffer.hpp"
+#include <Stream/Transform.hpp>
 #include <memory>
 
 namespace Stream::Format {
 
 enum class BaseMode : short {
-	_ALPHABET2ND		= 1,
-	_ALPHABET3RD		= 2,
-	_ALPHABET4TH		= 3,
-	_ALPHABET_MASK		= 3,
-	_NPAD				= 4, // no padding
-	_PAD				= 8,
-	_OPAD				= _NPAD | _PAD, // optional padding
-	//_IGNORE_INVALID 	= 128,
-	//_SPLITTED			= 256,
-	BASE16				= 16 | _NPAD,
-	BASE32				= 32 | _OPAD,
-	BASE32_NPAD			= 32 | _NPAD,
-	BASE32_HEX			= BASE32 | _ALPHABET2ND,
-	BASE32_HEX_NPAD		= BASE32_NPAD | _ALPHABET2ND,
-	BASE64				= 64 | _OPAD,
-	BASE64_NPAD			= 64 | _NPAD,
-	BASE64_URL			= BASE64 | _ALPHABET2ND,
-	BASE64_URL_NPAD		= BASE64_NPAD | _ALPHABET2ND,
+	B_ALPHABET2ND		= 1,
+	B_ALPHABET3RD		= 2,
+	B_ALPHABET4TH		= 3,
+	B_ALPHABET_MASK		= 3,
+	B_NPAD				= 4, // no padding
+	B_PAD				= 8,
+	B_OPAD				= B_NPAD | B_PAD, // optional padding
+	//B_IGNORE_INVALID 	= 128,
+	//B_SPLITTED			= 256,
+	BASE16				= 16 | B_NPAD,
+	BASE32				= 32 | B_OPAD,
+	BASE32_NPAD			= 32 | B_NPAD,
+	BASE32_HEX			= BASE32 | B_ALPHABET2ND,
+	BASE32_HEX_NPAD		= BASE32_NPAD | B_ALPHABET2ND,
+	BASE64				= 64 | B_OPAD,
+	BASE64_NPAD			= 64 | B_NPAD,
+	BASE64_URL			= BASE64 | B_ALPHABET2ND,
+	BASE64_URL_NPAD		= BASE64_NPAD | B_ALPHABET2ND,
 	BASE64_UTF7			= BASE64_NPAD,
-	BASE64_IMAP			= BASE64_NPAD | _ALPHABET3RD,
-	//BASE64_PEM		= 64 | _PAD | _SPLITTED, // todo line length 64
-	//BASE64_MIME		= 64 | _PAD | _SPLITTED | _IGNORE_INVALID, // todo line length 76
+	BASE64_IMAP			= BASE64_NPAD | B_ALPHABET3RD,
+	//BASE64_PEM		= 64 | B_PAD | B_SPLITTED, // todo line length 64
+	//BASE64_MIME		= 64 | B_PAD | B_SPLITTED | B_IGNORE_INVALID, // todo line length 76
 };
 
 /**
  * @brief	Stream::Input %Base decoder
  * @class	BaseDecode Base.hpp "StreamFormat/Base.hpp"
  */
-class BaseDecode : public BufferInput {
+class BaseDecode : public TransformInput {
 	std::unique_ptr<unsigned char> mCtx;
 	std::unique_ptr<unsigned char> mTempBeg;
 	unsigned char* mTempCurr = nullptr;
@@ -52,9 +52,7 @@ public:
 	struct Exception : Input::Exception
 	{ using Input::Exception::Exception; };
 
-	explicit BaseDecode(BaseMode mode, std::size_t buffInitialSize = 0);
-
-	BaseDecode(BaseMode mode, void const* sourceBuff, std::size_t sourceSize);
+	explicit BaseDecode(BaseMode mode);
 
 	BaseDecode(BaseDecode&& other) noexcept;
 
@@ -76,7 +74,7 @@ public:
  * @class	BaseEncode Base.hpp "StreamFormat/Base.hpp"
  * @see		https://tools.ietf.org/html/rfc4648
  */
-class BaseEncode : public BufferOutput {
+class BaseEncode : public TransformOutput {
 	std::unique_ptr<unsigned char> mCtx;
 
 	std::size_t
@@ -89,9 +87,7 @@ public:
 	struct Exception : Output::Exception
 	{ using Output::Exception::Exception; };
 
-	explicit BaseEncode(BaseMode mode, std::size_t buffInitialSize = 0);
-
-	BaseEncode(BaseMode mode, void* sinkBuff, std::size_t sinkSize);
+	explicit BaseEncode(BaseMode mode);
 
 	BaseEncode(BaseEncode&& other) noexcept;
 
@@ -121,29 +117,9 @@ public:
 		};
 	};//struct Stream::Format::Base::Exception
 
-	Base(BaseMode decMode, BaseMode encMode,
-			std::size_t decBuffInitialSize = 0, std::size_t encBuffInitialSize = 0);
+	Base(BaseMode decMode, BaseMode encMode);
 
-	Base(BaseMode decMode, BaseMode encMode,
-			std::size_t decBuffInitialSize, void* sinkBuff, std::size_t sinkSize);
-
-	Base(BaseMode decMode, BaseMode encMode,
-			void const* sourceBuff, std::size_t sourceSize, std::size_t encBuffInitialSize = 0);
-
-	Base(BaseMode decMode, BaseMode encMode,
-			void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize);
-
-	explicit Base(BaseMode mode,
-			std::size_t decBuffInitialSize = 0, std::size_t encBuffInitialSize = 0);
-
-	Base(BaseMode mode,
-			std::size_t decBuffInitialSize, void* sinkBuff, std::size_t sinkSize);
-
-	Base(BaseMode mode,
-			void const* sourceBuff, std::size_t sourceSize, std::size_t encBuffInitialSize = 0);
-
-	Base(BaseMode mode,
-			void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize);
+	explicit Base(BaseMode mode);
 };//class Stream::Format::Base
 
 void
