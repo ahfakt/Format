@@ -1,7 +1,7 @@
 <map id="Stream::Format::DotOutput" name="Stream::Format::DotOutput">
-<area shape="rect" id="node1" title=" " alt="" coords="165,513,435,605"/>
-<area shape="rect" id="node5" href="$d5/d5f/classStream_1_1Format_1_1Dot.html" title=" " alt="" coords="229,653,371,731"/>
-<area shape="rect" id="node2" href="$d8/d50/classStream_1_1Format_1_1StringOutput.html" title=" " alt="" coords="5,256,595,465"/>
-<area shape="rect" id="node3" href="/home/null/doc/.doxy/Stream.xml$d1/dff/classStream_1_1TransformOutput" title=" " alt="" coords="215,131,385,208"/>
-<area shape="rect" id="node4" href="/home/null/doc/.doxy/Stream.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="245,5,355,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="158,528,429,620"/>
+<area shape="rect" id="node5" href="$d5/d5f/classStream_1_1Format_1_1Dot.html" title=" " alt="" coords="222,668,365,745"/>
+<area shape="rect" id="node2" href="$d8/d50/classStream_1_1Format_1_1StringOutput.html" title=" " alt="" coords="5,256,581,480"/>
+<area shape="rect" id="node3" href="/home/null/doc/.doxy/Stream.xml$d1/dff/classStream_1_1TransformOutput" title=" " alt="" coords="208,131,379,208"/>
+<area shape="rect" id="node4" href="/home/null/doc/.doxy/Stream.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="238,5,349,83"/>
 </map>
