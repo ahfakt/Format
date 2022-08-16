@@ -3,11 +3,6 @@
 
 namespace Stream::Format {
 
-template <Char C>
-StringOutput&
-StringOutput::operator<<(std::basic_string<C> const& str)
-{ return reinterpret_cast<StringOutput&>(write(str.data(), str.size() * sizeof(C))); }
-
 template <typename F>
 constexpr int max_exponent_digits10 = 0;
 
@@ -41,65 +36,92 @@ constexpr int max_hex_length = 2 + 1 + std::numeric_limits<F>::digits / 4 + 2 + 
 template <std::floating_point F>
 constexpr int max_scientific_length = 2 + std::numeric_limits<F>::max_digits10 + 2 + max_exponent_digits10<F>;
 
-StringOutput&
-StringOutput::operator<<(Integer auto val)
-{ return toChars(val, 10); }
+StringInput&
+StringInput::operator>>(Char auto& c)
+{ return reinterpret_cast<StringInput&>(read(&c, sizeof c)); }
 
-StringOutput&
-StringOutput::operator<<(std::floating_point auto val)
+StringInput&
+StringInput::operator>>(Integer auto& i)
+{ return fromChars(i, 10); }
+
+StringInput&
+StringInput::fromChars(Integer auto& i, unsigned base)
 {
-	constexpr std::size_t max = std::min(max_fixed_length<decltype(val)>, max_scientific_length<decltype(val)>);
-	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val);
-	if (r.ec == std::errc()) {
-		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
-		return *this;
+	if (base >= 2 && base <= 36) {
+		if constexpr (SignedInt<std::remove_reference_t<decltype(i)>>) {
+			if (auto e = provideSignedInt(0, base))
+				return checkFromChars(std::from_chars(reinterpret_cast<char const*>(getData()),
+						reinterpret_cast<char const*>(getData()) + e, i, base));
+		} else {
+			if (auto e = provideUnsignedInt(0, base))
+				return checkFromChars(std::from_chars(reinterpret_cast<char const*>(getData()),
+						reinterpret_cast<char const*>(getData()) + e, i, base));
+		}
 	}
-	throw Exception(std::make_error_code(r.ec));
+	throw Exception(std::make_error_code(std::errc::invalid_argument));
+}
+
+StringInput&
+StringInput::operator>>(std::floating_point auto& f)
+{ return fromChars(f, std::chars_format::general); }
+
+StringInput&
+StringInput::fromChars(std::floating_point auto& f, std::chars_format fmt)
+{
+	if (auto e = provideFloat(0, fmt))
+		return checkFromChars(std::from_chars(reinterpret_cast<char const*>(getData()),
+				reinterpret_cast<char const*>(getData()) + e, f, fmt));
+	throw Exception(std::make_error_code(std::errc::invalid_argument));
 }
 
 StringOutput&
-StringOutput::toChars(Integer auto val, int base)
+StringOutput::operator<<(Char auto c)
+{ return reinterpret_cast<StringOutput&>(write(&c, sizeof c)); }
+
+StringOutput&
+StringOutput::operator<<(Integer auto i)
+{ return toChars(i, 10); }
+
+StringOutput&
+StringOutput::toChars(Integer auto i, unsigned base)
 {
-	constexpr std::size_t max = 1 + 8 * sizeof val;
+	constexpr std::size_t max = 1 + 8 * sizeof i;
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, base);
-	if (r.ec == std::errc()) {
-		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
-		return *this;
-	}
-	throw Exception(std::make_error_code(r.ec));
+	return checkToChars(std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), i, base));
 }
 
 StringOutput&
-StringOutput::toChars(std::floating_point auto val, std::chars_format fmt)
+StringOutput::operator<<(std::floating_point auto f)
 {
-	std::size_t max = fmt == std::chars_format::fixed ? max_fixed_length<decltype(val)>
-			: (fmt == std::chars_format::hex ? max_hex_length<decltype(val)>
-			: max_scientific_length<decltype(val)>);
+	constexpr std::size_t max = std::min(max_fixed_length<decltype(f)>, max_scientific_length<decltype(f)>);
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, fmt);
-	if (r.ec == std::errc()) {
-		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
-		return *this;
-	}
-	throw Exception(std::make_error_code(r.ec));
+	return checkToChars(std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), f));
 }
 
 StringOutput&
-StringOutput::toChars(std::floating_point auto val, std::chars_format fmt, std::size_t precision)
+StringOutput::toChars(std::floating_point auto f, std::chars_format fmt)
+{
+	std::size_t max = fmt == std::chars_format::fixed ? max_fixed_length<decltype(f)>
+			: (fmt == std::chars_format::hex ? max_hex_length<decltype(f)>
+			: max_scientific_length<decltype(f)>);
+	provideSpace(max);
+	return checkToChars(std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), f, fmt));
+}
+
+StringOutput&
+StringOutput::toChars(std::floating_point auto f, std::chars_format fmt, std::size_t precision)
 {
 	std::size_t max = 2 + precision + 1;
-	max += fmt == std::chars_format::fixed ? std::numeric_limits<decltype(val)>::max_exponent10
-			: (fmt == std::chars_format::hex ? 2 + max_exponent_digits2<decltype(val)>
-			: 2 + max_exponent_digits10<decltype(val)>);
+	max += fmt == std::chars_format::fixed ? std::numeric_limits<decltype(f)>::max_exponent10
+			: (fmt == std::chars_format::hex ? 2 + max_exponent_digits2<decltype(f)>
+			: 2 + max_exponent_digits10<decltype(f)>);
 	provideSpace(max);
-	std::to_chars_result r = std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), val, fmt, precision);
-	if (r.ec == std::errc()) {
-		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
-		return *this;
-	}
-	throw Exception(std::make_error_code(r.ec));
+	return checkToChars(std::to_chars(reinterpret_cast<char*>(getSpace()), reinterpret_cast<char*>(getSpace() + max), f, fmt, precision));
 }
+
+template <Char C>
+StringOutput&
+StringOutput::operator<<(std::basic_string<C> const& s)
+{ return reinterpret_cast<StringOutput&>(write(s.data(), s.size() * sizeof(C))); }
 
 }//namespace Stream::Format

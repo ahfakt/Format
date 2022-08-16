@@ -7,10 +7,18 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/${CMAKE_SYSTEM_PR
 set(INC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_executable(${PROJECT_NAME}_String_00)
-target_include_directories(${PROJECT_NAME}_String_00 PRIVATE include)
-target_link_libraries(${PROJECT_NAME}_String_00 PRIVATE StreamFormat)
-target_sources(${PROJECT_NAME}_String_00
+add_executable(${PROJECT_NAME}_Integer)
+target_include_directories(${PROJECT_NAME}_Integer PRIVATE include)
+target_link_libraries(${PROJECT_NAME}_Integer PRIVATE StreamFormat)
+target_sources(${PROJECT_NAME}_Integer
 		PRIVATE
-		${SRC_ROOT}/String_00.cpp)
-add_test(NAME ${PROJECT_NAME}_String_00 COMMAND ${PROJECT_NAME}_String_00)
+		${SRC_ROOT}/Integer.cpp)
+add_test(NAME ${PROJECT_NAME}_Integer COMMAND ${PROJECT_NAME}_Integer)
+
+add_executable(${PROJECT_NAME}_Float)
+target_include_directories(${PROJECT_NAME}_Float PRIVATE include)
+target_link_libraries(${PROJECT_NAME}_Float PRIVATE StreamFormat)
+target_sources(${PROJECT_NAME}_Float
+		PRIVATE
+		${SRC_ROOT}/Float.cpp)
+add_test(NAME ${PROJECT_NAME}_Float COMMAND ${PROJECT_NAME}_Float)

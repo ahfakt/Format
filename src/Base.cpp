@@ -399,11 +399,10 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 		try {
 			size = provideSomeData(size);
 		} catch (Input::Exception& exc) {
-			if (exc.code() == std::make_error_code(static_cast<std::errc>(ENODATA))) {
-				finalizeDecoding();
-				return 0; // try again to read from mTemp
-			}
-			throw;
+			if (exc.code() != std::make_error_code(std::errc::no_message_available))
+				throw;
+			finalizeDecoding();
+			return 0; // try again to read from mTemp
 		}
 	} else
 		size = provideSomeData(size);
