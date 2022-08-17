@@ -38,7 +38,7 @@ StringInput::provideFloat(std::size_t i, std::chars_format fmt)
 			}
 		}
 		return j - i;
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -55,7 +55,7 @@ StringInput::provideSignedInt(std::size_t i, unsigned base)
 		j += getData()[j] == std::byte{'-'};
 		if (auto r = provideUnsignedInt(j, base))
 			return j + r - i;
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -76,7 +76,7 @@ StringInput::provideDecFrac(std::size_t i)
 		j += getData()[j] == std::byte{'.'};
 		if (auto r = provideDigits10(j))
 			return j + r - i;
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -97,7 +97,7 @@ StringInput::provideDecExp(std::size_t i)
 			if (auto r = provideDigits10(j))
 				return j + r - i;
 		}
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -118,7 +118,7 @@ StringInput::provideDigits10(std::size_t i, unsigned base)
 		}
 		try {
 			provideSomeMoreData(dataSize * 2);
-		} catch (Input::Exception& exc) {
+		} catch (Input::Exception const& exc) {
 			if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 				throw;
 			return j - i;
@@ -136,7 +136,7 @@ StringInput::provideHexFrac(std::size_t i)
 		j += (getData()[j] == std::byte{'.'});
 		if (auto r = provideDigits36(j, 16))
 			return j + r - i;
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -157,7 +157,7 @@ StringInput::provideHexExp(std::size_t i)
 			if (auto r = provideDigits36(j, 16))
 				return j + r - i;
 		}
-	} catch (Input::Exception& exc) {
+	} catch (Input::Exception const& exc) {
 		if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 			throw;
 	}
@@ -179,7 +179,7 @@ StringInput::provideDigits36(std::size_t i, unsigned base)
 		}
 		try {
 			provideSomeMoreData(dataSize * 2);
-		} catch (Input::Exception& exc) {
+		} catch (Input::Exception const& exc) {
 			if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 				throw;
 			return j - i;

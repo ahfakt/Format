@@ -398,7 +398,7 @@ BaseDecode::readBytes(std::byte* dest, std::size_t size)
 	if (mFinalizeWhenNoData) {
 		try {
 			size = provideSomeData(size);
-		} catch (Input::Exception& exc) {
+		} catch (Input::Exception const& exc) {
 			if (exc.code() != std::make_error_code(std::errc::no_message_available))
 				throw;
 			finalizeDecoding();
@@ -685,7 +685,7 @@ BaseEncode::~BaseEncode()
 {
 	try {
 		finalizeEncoding();
-	} catch (Output::Exception& exc) {
+	} catch (Output::Exception const& exc) {
 		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
 	}
 }
