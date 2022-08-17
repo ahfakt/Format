@@ -198,7 +198,7 @@ Friends</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  685</span>{</div>
 <div class="line"><span class="lineno">  686</span>    <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">  687</span>        finalizeEncoding();</div>
-<div class="line"><span class="lineno">  688</span>    } <span class="keywordflow">catch</span> (Output::Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">  688</span>    } <span class="keywordflow">catch</span> (Output::Exception <span class="keyword">const</span>&amp; exc) {</div>
 <div class="line"><span class="lineno">  689</span>        ::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));</div>
 <div class="line"><span class="lineno">  690</span>    }</div>
 <div class="line"><span class="lineno">  691</span>}</div>
