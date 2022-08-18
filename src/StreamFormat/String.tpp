@@ -124,4 +124,11 @@ StringOutput&
 StringOutput::operator<<(std::basic_string<C> const& s)
 { return reinterpret_cast<StringOutput&>(write(s.data(), s.size() * sizeof(C))); }
 
+StringOutput&
+StringOutput::operator<<(Char auto const* s)
+{
+	using C = std::remove_pointer_t<decltype(s)>;
+	return reinterpret_cast<StringOutput&>(write(s, std::char_traits<C>::length(s) * sizeof(C)));
+}
+
 }//namespace Stream::Format

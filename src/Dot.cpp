@@ -2,9 +2,6 @@
 
 namespace Stream::Format {
 
-DotOutput::DotOutput(DotOutput&& other) noexcept
-{ swap(*this, other); }
-
 std::error_code
 make_error_code(Dot::Exception::Code e) noexcept
 {

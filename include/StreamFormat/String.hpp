@@ -43,7 +43,7 @@ public:
 
 	StringInput() noexcept = default;
 
-	StringInput(StringInput&& other) noexcept;
+	StringInput(StringInput&& other) noexcept = default;
 
 	StringInput&
 	operator>>(bool& b);
@@ -74,7 +74,7 @@ public:
 
 	StringOutput() noexcept = default;
 
-	StringOutput(StringOutput&& other) noexcept;
+	StringOutput(StringOutput&& other) noexcept = default;
 
 	StringOutput&
 	operator<<(void const* p);
@@ -103,6 +103,9 @@ public:
 	template <Char C>
 	StringOutput&
 	operator<<(std::basic_string<C> const& s);
+
+	StringOutput&
+	operator<<(Char auto const* s);
 };//class Stream::Format::StringOutput
 
 class String : public StringInput, public StringOutput {

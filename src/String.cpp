@@ -2,9 +2,6 @@
 
 namespace Stream::Format {
 
-StringInput::StringInput(StringInput&& other) noexcept
-{ swap(*this, other); }
-
 StringInput&
 StringInput::checkFromChars(std::from_chars_result r)
 {
@@ -24,17 +21,21 @@ StringInput::provideFloat(std::size_t i, std::chars_format fmt)
 			provideSomeMoreData(1);
 		j += getData()[j] == std::byte{'-'};
 		if (fmt != std::chars_format::hex) {
-			if (auto r = provideDigits10(j)) {
-				j += r;
-				j += provideDecFrac(j);
+			if (auto r = provideDigits10(j)) try {
+				j += provideDecFrac(j += r);
 				if (fmt != std::chars_format::fixed)
 					j += provideDecExp(j);
+			} catch (Input::Exception const& exc) {
+				if (exc.code() != std::make_error_code(std::errc::no_message_available))
+					throw;
 			}
 		} else {
-			if (auto r = provideDigits36(j, 16)) {
-				j += r;
-				j += provideHexFrac(j);
+			if (auto r = provideDigits36(j, 16)) try {
+				j += provideHexFrac(j += r);
 				j += provideHexExp(j);
+			} catch (Input::Exception const& exc) {
+				if (exc.code() != std::make_error_code(std::errc::no_message_available))
+					throw;
 			}
 		}
 		return j - i;
@@ -186,9 +187,6 @@ StringInput::provideDigits36(std::size_t i, unsigned base)
 		}
 	}
 }
-
-StringOutput::StringOutput(StringOutput&& other) noexcept
-{ swap(*this, other); }
 
 StringOutput&
 StringOutput::checkToChars(std::to_chars_result r)

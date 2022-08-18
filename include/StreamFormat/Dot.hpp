@@ -12,7 +12,7 @@ public:
 
 	DotOutput() noexcept = default;
 
-	DotOutput(DotOutput&& other) noexcept;
+	DotOutput(DotOutput&& other) noexcept = default;
 };//class Stream::Format::DotOutput
 
 class Dot : public DotOutput {
