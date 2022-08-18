@@ -16,7 +16,6 @@ INSTALL_PREFIX=/home/user
 # cmake --help to see available generators
 GENERATOR="Unix Makefiles"
 
-git clone https://github.com/ahfakt/IO.git
 git clone https://github.com/ahfakt/Stream.git
 git clone https://github.com/ahfakt/StreamFormat.git
 
@@ -32,10 +31,9 @@ cmake \
     -G "${GENERATOR}"
 
 # Build
-# IO | IOOBJ | IODoc
 # Stream | StreamOBJ | StreamDoc
 # StreamFormat | StreamFormatOBJ | StreamFormatDoc
-# StreamFormatTest_Base_00
+# Test targets are avaiable only when BUILD_TYPE=Debug
 cmake \
     --build ../build/StreamFormat/${SYSTEM_PROCESSOR}/${BUILD_TYPE} \
     --target StreamFormat \
