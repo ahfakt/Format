@@ -31,16 +31,10 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${DEPENDENCIES})
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	enable_testing()
 	add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test ${CMAKE_CURRENT_BINARY_DIR}/Testing)
-endif()
-
-
-if (CMAKE_BUILD_TYPE MATCHES Debug)
-	enable_testing()
-	add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test ${CMAKE_CURRENT_BINARY_DIR}/Testing)
 elseif (CMAKE_BUILD_TYPE MATCHES Release)
 	find_package(Doxygen)
 	if (DOXYGEN_FOUND)
-		set(DOXYGEN_CFG ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.cfg)
+		set(DOXYGEN_CFG ${CMAKE_CURRENT_BINARY_DIR}/doxygen.cfg)
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/doxygen.cfg ${DOXYGEN_CFG} @ONLY)
 		add_custom_target(${PROJECT_NAME}Doc
 			COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CFG}
