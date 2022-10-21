@@ -2,7 +2,7 @@
 #include <iostream>
 #include <Stream/File.hpp>
 #include <StreamFormat/Base.hpp>
-#include "Util.hpp"
+#include <StreamTest/Util.hpp>
 
 std::vector<std::byte>
 testEncode(char const* fileName, Stream::Format::BaseMode mode, int length, int maxChunkLength)

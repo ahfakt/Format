@@ -1,10 +1,10 @@
+#include <Stream/Pipe.hpp>
 #include <StreamFormat/String.hpp>
 #include <iostream>
 #include <charconv>
 #include <numeric>
 #include <cstring>
 #include <cassert>
-#include <Stream/Pipe.hpp>
 
 int main()
 {
