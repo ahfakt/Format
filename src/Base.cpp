@@ -5,12 +5,12 @@
 namespace Stream::Format {
 
 struct BaseContext {
-	signed char const* table = nullptr;
+	signed char const* table{nullptr};
 	unsigned char beg[8];
-	unsigned char* curr = nullptr;
-	unsigned char const* end = nullptr;
-	bool (*update)(BaseContext* ctx, unsigned char* out, int* outl, unsigned char const* in, int inl) = nullptr;
-	void (*final)(BaseContext* ctx, unsigned char* out, int* outl) = nullptr;
+	unsigned char* curr{nullptr};
+	unsigned char const* end{nullptr};
+	bool (*update)(BaseContext* ctx, unsigned char* out, int* outl, unsigned char const* in, int inl){nullptr};
+	void (*final)(BaseContext* ctx, unsigned char* out, int* outl){nullptr};
 	unsigned short mode{0};
 	unsigned char rawLength{0};
 	unsigned char encodedLength{0};

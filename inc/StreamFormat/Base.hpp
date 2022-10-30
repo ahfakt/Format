@@ -38,8 +38,8 @@ enum class BaseMode : short {
 class BaseDecode : public TransformInput {
 	std::unique_ptr<unsigned char> mCtx;
 	std::unique_ptr<unsigned char> mTempBeg;
-	unsigned char* mTempCurr = nullptr;
-	unsigned char const* mTempEnd = nullptr;
+	unsigned char* mTempCurr{nullptr};
+	unsigned char const* mTempEnd{nullptr};
 	bool mFinalizeWhenNoData = true;
 
 	std::size_t
