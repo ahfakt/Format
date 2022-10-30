@@ -11,9 +11,9 @@ struct BaseContext {
 	unsigned char const* end = nullptr;
 	bool (*update)(BaseContext* ctx, unsigned char* out, int* outl, unsigned char const* in, int inl) = nullptr;
 	void (*final)(BaseContext* ctx, unsigned char* out, int* outl) = nullptr;
-	unsigned short mode = 0;
-	unsigned char rawLength = 0;
-	unsigned char encodedLength = 0;
+	unsigned short mode{0};
+	unsigned char rawLength{0};
+	unsigned char encodedLength{0};
 };
 
 signed char const
@@ -71,7 +71,7 @@ Base64DecodeTable[][256] = {
 bool
 BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 {
-	int r = 0;
+	int r{0};
 	if (ctx->mode & static_cast<short>(BaseMode::B_PAD)) {
 		r = static_cast<int>(ctx->curr - ctx->beg + inl) & (ctx->encodedLength - 1);
 		if (r > 2) r = r - 2;
@@ -81,7 +81,7 @@ BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 			r = inl;
 	}
 
-	for (int i = 0; i < inl - r; ++i)
+	for (int i{0}; i < inl - r; ++i)
 		if (ctx->table[in[i]] < 0)
 			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, std::string("'") + static_cast<char>(in[i]) + "'");
 
@@ -280,7 +280,7 @@ bool
 Base16DecodeUpdate(BaseContext* ctx, unsigned char* out, int* outl, unsigned char const* in, int inl)
 {
 	*outl = 0;
-	for (int i = 0; i < inl; ++i)
+	for (int i{0}; i < inl; ++i)
 		if (ctx->table[in[i]] < 0)
 			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, std::string("'") + static_cast<char>(in[i]) + "'");
 

@@ -4,7 +4,7 @@
 namespace Stream::Format {
 
 template <typename F>
-constexpr int max_exponent_digits10 = 0;
+constexpr int max_exponent_digits10{0};
 
 template <>
 constexpr int max_exponent_digits10<float> = 2; // FLT_MAX_10_EXP = 38
@@ -16,7 +16,7 @@ template <>
 constexpr int max_exponent_digits10<long double> = 4; // LDBL_MAX_10_EXP = 4932
 
 template <typename F>
-constexpr int max_exponent_digits2 = 0;
+constexpr int max_exponent_digits2{0};
 
 template <>
 constexpr int max_exponent_digits2<float> = 3; // FLT_MAX_EXP = 128

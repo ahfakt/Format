@@ -38,8 +38,8 @@ int main()
 		str.flush();
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -48,8 +48,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -58,8 +58,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -68,8 +68,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;
@@ -78,8 +78,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -88,8 +88,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -98,8 +98,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -108,8 +108,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;
@@ -143,8 +143,8 @@ int main()
 		str.flush();
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -153,8 +153,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -163,8 +163,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -173,8 +173,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;
@@ -183,8 +183,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -193,8 +193,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -203,8 +203,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -213,8 +213,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;
@@ -248,8 +248,8 @@ int main()
 		str.flush();
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -258,8 +258,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -268,8 +268,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -278,8 +278,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;
@@ -288,8 +288,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::fixed) >> c;
 			str.fromChars(max, std::chars_format::fixed) >> c;
@@ -298,8 +298,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::scientific) >> c;
 			str.fromChars(max, std::chars_format::scientific) >> c;
@@ -308,8 +308,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::general) >> c;
 			str.fromChars(max, std::chars_format::general) >> c;
@@ -318,8 +318,8 @@ int main()
 		}
 
 		{
-			F min = 0;
-			F max = 0;
+			F min{0};
+			F max{0};
 			char c;
 			str.fromChars(min, std::chars_format::hex) >> c;
 			str.fromChars(max, std::chars_format::hex) >> c;

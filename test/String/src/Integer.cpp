@@ -28,10 +28,10 @@ int main()
 		}
 		str.flush();
 		for (int i = 2; i < 37; ++i) {
-			U umin = 0;
-			U umax = 0;
-			I imin = 0;
-			I imax = 0;
+			U umin{0};
+			U umax{0};
+			I imin{0};
+			I imax{0};
 			char c;
 			str.fromChars(umin, i) >> c;
 			str.fromChars(umax, i) >> c;
@@ -59,10 +59,10 @@ int main()
 		}
 		str.flush();
 		for (int i = 2; i < 37; ++i) {
-			U umin = 0;
-			U umax = 0;
-			I imin = 0;
-			I imax = 0;
+			U umin{0};
+			U umax{0};
+			I imin{0};
+			I imax{0};
 			char c;
 			str.fromChars(umin, i) >> c;
 			str.fromChars(umax, i) >> c;
@@ -90,10 +90,10 @@ int main()
 		}
 		str.flush();
 		for (int i = 2; i < 37; ++i) {
-			U umin = 0;
-			U umax = 0;
-			I imin = 0;
-			I imax = 0;
+			U umin{0};
+			U umax{0};
+			I imin{0};
+			I imax{0};
 			char c;
 			str.fromChars(umin, i) >> c;
 			str.fromChars(umax, i) >> c;
@@ -121,10 +121,10 @@ int main()
 		}
 		str.flush();
 		for (int i = 2; i < 37; ++i) {
-			U umin = 0;
-			U umax = 0;
-			I imin = 0;
-			I imax = 0;
+			U umin{0};
+			U umax{0};
+			I imin{0};
+			I imax{0};
 			char c;
 			str.fromChars(umin, i) >> c;
 			str.fromChars(umax, i) >> c;
