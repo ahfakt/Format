@@ -5,11 +5,10 @@ namespace Stream::Format {
 StringInput&
 StringInput::checkFromChars(std::from_chars_result r)
 {
-	if (r.ec == std::errc{}) {
-		advanceData(reinterpret_cast<std::byte const*>(r.ptr) - getData());
-		return *this;
-	}
-	throw Exception(std::make_error_code(r.ec));
+	if (r.ec != std::errc{})
+		throw Exception(std::make_error_code(r.ec));
+	advanceData(reinterpret_cast<std::byte const*>(r.ptr) - getData());
+	return *this;
 }
 
 std::size_t
@@ -191,11 +190,10 @@ StringInput::provideDigits36(std::size_t i, unsigned base)
 StringOutput&
 StringOutput::checkToChars(std::to_chars_result r)
 {
-	if (r.ec == std::errc{}) {
-		advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
-		return *this;
-	}
-	throw Exception(std::make_error_code(r.ec));
+	if (r.ec != std::errc{})
+		throw Exception(std::make_error_code(r.ec));
+	advanceSpace(reinterpret_cast<std::byte*>(r.ptr) - getSpace());
+	return *this;
 }
 
 StringOutput&

@@ -5,7 +5,7 @@
 namespace Stream::Format {
 
 struct BaseContext {
-	char const* table = nullptr;
+	signed char const* table = nullptr;
 	unsigned char beg[8];
 	unsigned char* curr = nullptr;
 	unsigned char const* end = nullptr;
@@ -16,7 +16,7 @@ struct BaseContext {
 	unsigned char encodedLength = 0;
 };
 
-char const
+signed char const
 Base64DecodeTable[][256] = {
 	{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -149,7 +149,7 @@ Base64DecodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 		*outl = 0;
 }
 
-char const
+signed char const
 Base32DecodeTable[][256] = {
 	{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -257,7 +257,7 @@ Base32DecodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 		*outl = 0;
 }
 
-char const
+signed char const
 Base16DecodeTable[] =
 	{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -442,7 +442,7 @@ BaseDecode::finalizeDecodingWhenNoData(bool on)
 /**
  * @see		<a href="https://tools.ietf.org/html/rfc4648#section-3.4">Choosing the Alphabet</a>
  */
-char const
+signed char const
 Base64EncodeTable[][65] = {
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",
@@ -506,7 +506,7 @@ Base64EncodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 	}
 }
 
-char const
+signed char const
 Base32EncodeTable[][33] {
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ234567",
 		"0123456789ABCDEFGHIJKLMNOPQRSTUV"
@@ -585,7 +585,7 @@ Base32EncodeFinal(BaseContext* ctx, unsigned char* out, int* outl)
 	}
 }
 
-char const
+signed char const
 Base16EncodeTable[] = "0123456789ABCDEF";
 
 bool
