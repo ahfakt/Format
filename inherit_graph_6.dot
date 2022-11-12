@@ -1,0 +1,32 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [label="Stream::Input",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="steelblue1",style="solid"];
+  Node1 [label="Stream::TransformInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="Format::BaseDecode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d52/classFormat_1_1BaseDecode.html",tooltip="Stream::Input Base decoder."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="Format::Base",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/df1/classFormat_1_1Base.html",tooltip="Stream::Input / Stream::Output Base decoder and encoder."];
+  Node1 -> Node10 [dir="back",color="steelblue1",style="solid"];
+  Node10 [label="Format::StringInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/df1/classFormat_1_1StringInput.html",tooltip=" "];
+  Node10 -> Node9 [dir="back",color="steelblue1",style="solid"];
+  Node9 [label="Format::String",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$df/d21/classFormat_1_1String.html",tooltip=" "];
+  Node11 [label="Stream::Output",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html",tooltip=" "];
+  Node11 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="Stream::TransformOutput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="Format::BaseEncode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/d91/classFormat_1_1BaseEncode.html",tooltip="Stream::Output Base encoder."];
+  Node4 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node5 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="Format::StringOutput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/dc1/classFormat_1_1StringOutput.html",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="steelblue1",style="solid"];
+  Node7 [label="Format::DotOutput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/db3/classFormat_1_1DotOutput.html",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="steelblue1",style="solid"];
+  Node8 [label="Format::Dot",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d2f/classFormat_1_1Dot.html",tooltip=" "];
+  Node6 -> Node9 [dir="back",color="steelblue1",style="solid"];
+}
