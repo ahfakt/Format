@@ -1,0 +1,9 @@
+<map id="Format::Base" name="Format::Base">
+<area shape="rect" id="node1" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="225,343,553,412"/>
+<area shape="rect" id="node2" href="$d3/d52/classFormat_1_1BaseDecode.html" title="Stream::Input Base decoder." alt="" coords="5,181,377,295"/>
+<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="109,93,273,133"/>
+<area shape="rect" id="node4" href="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="139,5,244,45"/>
+<area shape="rect" id="node5" href="$d1/d91/classFormat_1_1BaseEncode.html" title="Stream::Output Base encoder." alt="" coords="402,181,773,295"/>
+<area shape="rect" id="node6" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="500,93,675,133"/>
+<area shape="rect" id="node7" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="530,5,645,45"/>
+</map>
