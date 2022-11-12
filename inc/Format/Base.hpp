@@ -1,10 +1,10 @@
-#ifndef STREAM_FORMAT_BASE_HPP
-#define	STREAM_FORMAT_BASE_HPP
+#ifndef FORMAT_BASE_HPP
+#define	FORMAT_BASE_HPP
 
 #include <Stream/Transform.hpp>
 #include <memory>
 
-namespace Stream::Format {
+namespace Format {
 
 enum class BaseMode : short {
 	B_ALPHABET2ND		= 1,
@@ -33,9 +33,9 @@ enum class BaseMode : short {
 
 /**
  * @brief	Stream::Input %Base decoder
- * @class	BaseDecode Base.hpp "StreamFormat/Base.hpp"
+ * @class	BaseDecode Base.hpp "Format/Base.hpp"
  */
-class BaseDecode : public TransformInput {
+class BaseDecode : public Stream::TransformInput {
 	std::unique_ptr<unsigned char> mCtx;
 	std::unique_ptr<unsigned char> mTempBeg;
 	unsigned char* mTempCurr{nullptr};
@@ -67,14 +67,14 @@ public:
 
 	void
 	finalizeDecodingWhenNoData(bool on = true);
-};//class Stream::Format::BaseDecode
+};//class Format::BaseDecode
 
 /**
  * @brief	Stream::Output %Base encoder
- * @class	BaseEncode Base.hpp "StreamFormat/Base.hpp"
+ * @class	BaseEncode Base.hpp "Format/Base.hpp"
  * @see		https://tools.ietf.org/html/rfc4648
  */
-class BaseEncode : public TransformOutput {
+class BaseEncode : public Stream::TransformOutput {
 	std::unique_ptr<unsigned char> mCtx;
 
 	std::size_t
@@ -101,11 +101,11 @@ public:
 
 	void
 	finalizeEncoding();
-};//class Stream::Format::BaseEncode
+};//class Format::BaseEncode
 
 /**
  * @brief Stream::Input / Stream::Output %Base decoder and encoder
- * @class Base Base.hpp "StreamFormat/Base.hpp"
+ * @class Base Base.hpp "Format/Base.hpp"
  */
 class Base : public BaseDecode, public BaseEncode {
 public:
@@ -115,12 +115,12 @@ public:
 			InvalidCharacter = 2,
 			InvalidFinalBlock = 3
 		};
-	};//struct Stream::Format::Base::Exception
+	};//struct Format::Base::Exception
 
 	Base(BaseMode decMode, BaseMode encMode);
 
 	explicit Base(BaseMode mode);
-};//class Stream::Format::Base
+};//class Format::Base
 
 void
 swap(Base& a, Base& b) noexcept;
@@ -128,13 +128,13 @@ swap(Base& a, Base& b) noexcept;
 std::error_code
 make_error_code(Base::Exception::Code e) noexcept;
 
-}//namespace Stream::Format
+}//namespace Format
 
 namespace std {
 
 template <>
-struct is_error_code_enum<Stream::Format::Base::Exception::Code> : true_type {};
+struct is_error_code_enum<Format::Base::Exception::Code> : true_type {};
 
 }//namespace std
 
-#endif //STREAM_FORMAT_BASE_HPP
+#endif //FORMAT_BASE_HPP

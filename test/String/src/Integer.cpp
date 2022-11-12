@@ -1,5 +1,5 @@
 #include <Stream/Pipe.hpp>
-#include <StreamFormat/String.hpp>
+#include <Format/String.hpp>
 #include <iostream>
 #include <charconv>
 #include <numeric>
@@ -10,7 +10,7 @@ int main()
 {
 	Stream::Pipe pipe;
 	Stream::Buffer buffer(pipe.getBufferSize());
-	Stream::Format::String str;
+	Format::String str;
 	pipe <=> buffer <=> str;
 
 	{

@@ -1,5 +1,5 @@
 #include <Stream/Pipe.hpp>
-#include <StreamFormat/String.hpp>
+#include <Format/String.hpp>
 #include <iostream>
 #include <charconv>
 #include <numeric>
@@ -9,15 +9,18 @@
 int main()
 {
 	Stream::Pipe pipe;
-	Stream::Buffer buffer(pipe.getBufferSize());
-	Stream::Format::String str;
+	Stream::Buffer buffer{100 * pipe.getBufferSize()};
+	Format::String str;
 	pipe <=> buffer <=> str;
+
+	wchar_t w[] = L"asd\r\n";
+	char* cw = reinterpret_cast<char*>(w);
 
 	{
 		using F = float;
-		F FLT_MIN = -std::numeric_limits<F>::min();
-		F FLT_MAX = -std::numeric_limits<F>::max();
-		std::size_t precision = 60;
+		F FLT_MIN{-std::numeric_limits<F>::min()};
+		F FLT_MAX{-std::numeric_limits<F>::max()};
+		std::size_t precision{60};
 
 		str.toChars(FLT_MIN, std::chars_format::fixed) << '\n';
 		str.toChars(FLT_MAX, std::chars_format::fixed) << '\n';
@@ -81,8 +84,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::fixed) >> c;
-			str.fromChars(max, std::chars_format::fixed) >> c;
+			str.fromChars(min, std::chars_format::fixed, precision) >> c;
+			str.fromChars(max, std::chars_format::fixed, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -91,8 +94,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::scientific) >> c;
-			str.fromChars(max, std::chars_format::scientific) >> c;
+			str.fromChars(min, std::chars_format::scientific, precision) >> c;
+			str.fromChars(max, std::chars_format::scientific, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -101,8 +104,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::general) >> c;
-			str.fromChars(max, std::chars_format::general) >> c;
+			str.fromChars(min, std::chars_format::general, precision) >> c;
+			str.fromChars(max, std::chars_format::general, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -111,8 +114,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::hex) >> c;
-			str.fromChars(max, std::chars_format::hex) >> c;
+			str.fromChars(min, std::chars_format::hex, precision) >> c;
+			str.fromChars(max, std::chars_format::hex, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -186,8 +189,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::fixed) >> c;
-			str.fromChars(max, std::chars_format::fixed) >> c;
+			str.fromChars(min, std::chars_format::fixed, precision) >> c;
+			str.fromChars(max, std::chars_format::fixed, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -196,8 +199,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::scientific) >> c;
-			str.fromChars(max, std::chars_format::scientific) >> c;
+			str.fromChars(min, std::chars_format::scientific, precision) >> c;
+			str.fromChars(max, std::chars_format::scientific, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -206,8 +209,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::general) >> c;
-			str.fromChars(max, std::chars_format::general) >> c;
+			str.fromChars(min, std::chars_format::general, precision) >> c;
+			str.fromChars(max, std::chars_format::general, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -216,8 +219,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::hex) >> c;
-			str.fromChars(max, std::chars_format::hex) >> c;
+			str.fromChars(min, std::chars_format::hex, precision) >> c;
+			str.fromChars(max, std::chars_format::hex, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -291,8 +294,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::fixed) >> c;
-			str.fromChars(max, std::chars_format::fixed) >> c;
+			str.fromChars(min, std::chars_format::fixed, precision) >> c;
+			str.fromChars(max, std::chars_format::fixed, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -301,8 +304,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::scientific) >> c;
-			str.fromChars(max, std::chars_format::scientific) >> c;
+			str.fromChars(min, std::chars_format::scientific, precision) >> c;
+			str.fromChars(max, std::chars_format::scientific, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -311,8 +314,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::general) >> c;
-			str.fromChars(max, std::chars_format::general) >> c;
+			str.fromChars(min, std::chars_format::general, precision) >> c;
+			str.fromChars(max, std::chars_format::general, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}
@@ -321,8 +324,8 @@ int main()
 			F min{0};
 			F max{0};
 			char c;
-			str.fromChars(min, std::chars_format::hex) >> c;
-			str.fromChars(max, std::chars_format::hex) >> c;
+			str.fromChars(min, std::chars_format::hex, precision) >> c;
+			str.fromChars(max, std::chars_format::hex, precision) >> c;
 			assert(min == FLT_MIN);
 			assert(max == FLT_MAX);
 		}

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14.0)
-project(StreamFormat VERSION 0.1 DESCRIPTION "Format related operations on streams")
+project(Format VERSION 0.1 DESCRIPTION "Format related operations on streams")
 
 
 set(DEPENDENCIES Stream)

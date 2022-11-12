@@ -1,6 +1,6 @@
-#include "StreamFormat/Dot.hpp"
+#include "Format/Dot.hpp"
 
-namespace Stream::Format {
+namespace Format {
 
 std::error_code
 make_error_code(Dot::Exception::Code e) noexcept
@@ -8,7 +8,7 @@ make_error_code(Dot::Exception::Code e) noexcept
 	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
-		{ return "Stream::Format::Dot"; }
+		{ return "Format::Dot"; }
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
@@ -21,4 +21,4 @@ make_error_code(Dot::Exception::Code e) noexcept
 	return {static_cast<int>(e), instance};
 }
 
-}//namespace Stream::Format
+}//namespace Format

@@ -1,9 +1,9 @@
-#ifndef STREAM_FORMAT_DOT_HPP
-#define	STREAM_FORMAT_DOT_HPP
+#ifndef FORMAT_DOT_HPP
+#define	FORMAT_DOT_HPP
 
 #include "String.hpp"
 
-namespace Stream::Format {
+namespace Format {
 
 class DotOutput : public StringOutput {
 public:
@@ -13,25 +13,25 @@ public:
 	DotOutput() noexcept = default;
 
 	DotOutput(DotOutput&& other) noexcept = default;
-};//class Stream::Format::DotOutput
+};//class Format::DotOutput
 
 class Dot : public DotOutput {
 public:
 	struct Exception {
 		enum class Code : int {};
-	};//struct Stream::Format::Dot::Exception
-};//class Stream::Format::Dot
+	};//struct Format::Dot::Exception
+};//class Format::Dot
 
 std::error_code
 make_error_code(Dot::Exception::Code e) noexcept;
 
-}//namespace Stream::Format
+}//namespace Format
 
 namespace std {
 
 template <>
-struct is_error_code_enum<Stream::Format::Dot::Exception::Code> : true_type {};
+struct is_error_code_enum<Format::Dot::Exception::Code> : true_type {};
 
 }//namespace std
 
-#endif //STREAM_FORMAT_DOT_HPP
+#endif //FORMAT_DOT_HPP

@@ -1,4 +1,4 @@
-# [Stream Format](https://ahfakt.github.io/StreamFormat/)
+# [Format](https://ahfakt.github.io/Format/)
 
 ```shell
 # Target system processor
@@ -8,23 +8,23 @@ SYSTEM_PROCESSOR=x64
 BUILD_TYPE=Release
 
 git clone https://github.com/ahfakt/Stream.git
-git clone https://github.com/ahfakt/StreamFormat.git
+git clone https://github.com/ahfakt/Format.git
 
 # Generate
-mkdir build && cd StreamFormat
+mkdir build && cd Format
 cmake \
-    -B../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/StreamFormat \
+    -B../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Format \
     -DCMAKE_BUILD_TYPE:STRING=${BUILD_TYPE} \
     -DCMAKE_CXX_STANDARD:STRING=20 \
     -G "Unix Makefiles"
 
 # Build
 # Stream | StreamDoc
-# StreamFormat | StreamFormatDoc
+# Format | FormatDoc
 # Test targets are avaiable only when BUILD_TYPE=Debug
 # Documentation is avaiable only when BUILD_TYPE=Release
 cmake \
-    --build ../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/StreamFormat \
+    --build ../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Format \
     --config ${BUILD_TYPE} \
     --target all
 ```

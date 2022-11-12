@@ -1,8 +1,8 @@
-#include "StreamFormat/Base.hpp"
+#include "Format/Base.hpp"
 #include <cstring>
 #include <unistd.h>
 
-namespace Stream::Format {
+namespace Format {
 
 struct BaseContext {
 	signed char const* table{nullptr};
@@ -327,7 +327,7 @@ BaseDecode::BaseDecode(BaseDecode&& other) noexcept
 void
 swap(BaseDecode& a, BaseDecode& b) noexcept
 {
-	swap(static_cast<TransformInput&>(a), static_cast<TransformInput&>(b));
+	swap(static_cast<Stream::TransformInput&>(a), static_cast<Stream::TransformInput&>(b));
 	std::swap(a.mCtx, b.mCtx);
 	std::swap(a.mTempBeg, b.mTempBeg);
 	std::swap(a.mTempCurr, b.mTempCurr);
@@ -609,7 +609,7 @@ BaseEncode::BaseEncode(BaseEncode&& other) noexcept
 void
 swap(BaseEncode& a, BaseEncode& b) noexcept
 {
-	swap(static_cast<TransformOutput&>(a), static_cast<TransformOutput&>(b));
+	swap(static_cast<Stream::TransformOutput&>(a), static_cast<Stream::TransformOutput&>(b));
 	std::swap(a.mCtx, b.mCtx);
 }
 
@@ -712,7 +712,7 @@ make_error_code(Base::Exception::Code e) noexcept
 	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
-		{ return "Stream::Format::Base"; }
+		{ return "Format::Base"; }
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
@@ -728,4 +728,4 @@ make_error_code(Base::Exception::Code e) noexcept
 	return {static_cast<int>(e), instance};
 }
 
-}//namespace Stream::Format
+}//namespace Format
