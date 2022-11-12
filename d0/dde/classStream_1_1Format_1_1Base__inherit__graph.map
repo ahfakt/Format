@@ -1,9 +1,0 @@
-<map id="Stream::Format::Base" name="Stream::Format::Base">
-<area shape="rect" id="node1" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="229,440,548,532"/>
-<area shape="rect" id="node2" href="$d7/d8f/classStream_1_1Format_1_1BaseDecode.html" title="Stream::Input Base decoder." alt="" coords="5,256,377,392"/>
-<area shape="rect" id="node3" href="/home/null/doc/.doxy/Stream.xml$db/d03/classStream_1_1TransformInput" title=" " alt="" coords="111,131,271,208"/>
-<area shape="rect" id="node4" href="/home/null/doc/.doxy/Stream.xml$d7/d83/classStream_1_1Input" title=" " alt="" coords="141,5,242,83"/>
-<area shape="rect" id="node5" href="$d5/d69/classStream_1_1Format_1_1BaseEncode.html" title="Stream::Output Base encoder." alt="" coords="402,256,773,392"/>
-<area shape="rect" id="node6" href="/home/null/doc/.doxy/Stream.xml$d1/dff/classStream_1_1TransformOutput" title=" " alt="" coords="502,131,673,208"/>
-<area shape="rect" id="node7" href="/home/null/doc/.doxy/Stream.xml$df/dc2/classStream_1_1Output" title=" " alt="" coords="532,5,643,83"/>
-</map>
