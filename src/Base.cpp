@@ -709,7 +709,7 @@ swap(Base& a, Base& b) noexcept
 std::error_code
 make_error_code(Base::Exception::Code e) noexcept
 {
-	static struct : std::error_category {
+	static const struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Format::Base"; }
@@ -724,8 +724,8 @@ make_error_code(Base::Exception::Code e) noexcept
 			default: return "Unknown Error";
 			}
 		}
-	} instance;
-	return {static_cast<int>(e), instance};
+	} cat;
+	return {static_cast<int>(e), cat};
 }
 
 }//namespace Format

@@ -71,6 +71,9 @@ public:
 
 	std::string_view
 	getLine(std::size_t limit = std::numeric_limits<std::size_t>::max());
+
+	std::string_view
+	getUntil(char d = ' ', std::size_t limit = std::numeric_limits<std::size_t>::max());
 };//class Format::StringInput
 
 class StringOutput : public Stream::TransformOutput {

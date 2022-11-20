@@ -234,6 +234,17 @@ StringInput::getLine(std::size_t l)
 	return s;
 }
 
+std::string_view
+StringInput::getUntil(char d, std::size_t l)
+{
+	auto e{l = provideUntil(0, l, d)};
+	if (getData()[e - 1] == std::byte(d))
+		--l;
+	std::string_view s{reinterpret_cast<char const*>(getData()), l};
+	advanceData(e);
+	return s;
+}
+
 StringOutput&
 StringOutput::checkToChars(std::to_chars_result r)
 {
