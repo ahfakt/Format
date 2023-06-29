@@ -12,10 +12,6 @@ int main()
 	Stream::Buffer buffer{100 * pipe.getBufferSize()};
 	Format::String str;
 	pipe <=> buffer <=> str;
-
-	wchar_t w[] = L"asd\r\n";
-	char* cw = reinterpret_cast<char*>(w);
-
 	{
 		using F = float;
 		F FLT_MIN{-std::numeric_limits<F>::min()};
@@ -123,9 +119,9 @@ int main()
 
 	{
 		using F = double;
-		F FLT_MIN = -std::numeric_limits<F>::min();
-		F FLT_MAX = -std::numeric_limits<F>::max();
-		std::size_t precision = 400;
+		F FLT_MIN{-std::numeric_limits<F>::min()};
+		F FLT_MAX{-std::numeric_limits<F>::max()};
+		std::size_t precision{400};
 
 		str.toChars(FLT_MIN, std::chars_format::fixed) << '\n';
 		str.toChars(FLT_MAX, std::chars_format::fixed) << '\n';
@@ -228,9 +224,9 @@ int main()
 
 	{
 		using F = long double;
-		F FLT_MIN = -std::numeric_limits<F>::min();
-		F FLT_MAX = -std::numeric_limits<F>::max();
-		std::size_t precision = 6000;
+		F FLT_MIN{-std::numeric_limits<F>::min()};
+		F FLT_MAX{-std::numeric_limits<F>::max()};
+		std::size_t precision{6000};
 
 		str.toChars(FLT_MIN, std::chars_format::fixed) << '\n';
 		str.toChars(FLT_MAX, std::chars_format::fixed) << '\n';

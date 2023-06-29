@@ -82,19 +82,19 @@ StringInput::fromChars(std::floating_point auto& f, std::chars_format fmt, std::
 	switch (fmt) {
 		case std::chars_format::fixed: {
 			il = 1 + std::numeric_limits<F>::max_exponent10;
-			fl = p ? p : 1 + std::numeric_limits<F>::digits10 + std::numeric_limits<F>::max_exponent10;
+			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10 + std::numeric_limits<F>::max_exponent10;
 			el = 0;
 			break;
 		}
 		case std::chars_format::scientific: {
 			il = 1;
-			fl = p ? p : 1 + std::numeric_limits<F>::digits10;
+			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10;
 			el = max_exponent_digits10<F>;
 			break;
 		}
 		case std::chars_format::general: {
 			il = p ? 1 + std::numeric_limits<F>::max_exponent10 : 1;
-			fl = p ? p : 1 + std::numeric_limits<F>::digits10;
+			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10;
 			el = max_exponent_digits10<F>;
 			break;
 		}
