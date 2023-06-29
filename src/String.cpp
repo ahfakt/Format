@@ -197,7 +197,7 @@ StringInput::provideDigits36(std::size_t i, std::size_t l, unsigned b)
 }
 
 std::size_t
-StringInput::provideUntil(std::size_t i, std::size_t l, char d)
+StringInput::provideUntil(std::size_t const i, std::size_t& l, char d)
 {
 	l += i;
 	auto j{i};
@@ -206,7 +206,7 @@ StringInput::provideUntil(std::size_t i, std::size_t l, char d)
 		auto const e = getDataSize();
 		for (; j < e; ++j) {
 			if (s[j] == d)
-				return ++j - i;
+				return (l = j - i) + 1;
 			if (j == l)
 				throw Exception{std::make_error_code(std::errc::result_out_of_range)};
 		}
@@ -215,34 +215,29 @@ StringInput::provideUntil(std::size_t i, std::size_t l, char d)
 		} catch (Input::Exception const& exc) {
 			if (exc.code() != std::make_error_code(std::errc::no_message_available) || i == j)
 				throw;
-			return j - i;
+			return l = j - i;
 		}
 	}
 }
 
-std::string_view
+std::tuple<char const*, char const*, char const*>
 StringInput::getLine(std::size_t l)
 {
-	auto e{l = provideUntil(0, l)};
-	if (getData()[e - 1] == std::byte{'\n'}) {
+	auto e{provideUntil(0, l, '\n')};
+	if (e > 1 && getData()[e - 2] == std::byte{'\r'})
 		--l;
-		if (e > 1 && getData()[e - 2] == std::byte{'\r'})
-			--l;
-	}
-	std::string_view s{reinterpret_cast<char const*>(getData()), l};
+	char const* b{reinterpret_cast<char const*>(getData())};
 	advanceData(e);
-	return s;
+	return {b, b + l, b + e};
 }
 
-std::string_view
+std::tuple<char const*, char const*, char const*>
 StringInput::getUntil(char d, std::size_t l)
 {
-	auto e{l = provideUntil(0, l, d)};
-	if (getData()[e - 1] == std::byte(d))
-		--l;
-	std::string_view s{reinterpret_cast<char const*>(getData()), l};
+	auto e{provideUntil(0, l, d)};
+	char const* b{reinterpret_cast<char const*>(getData())};
 	advanceData(e);
-	return s;
+	return {b, b + l, b + e};
 }
 
 StringOutput&
@@ -262,6 +257,27 @@ StringOutput&
 StringOutput::operator<<(bool b)
 { return reinterpret_cast<StringOutput&>(write(b ? "true" : "false", 5 - b)); }
 
+std::size_t
+String::UppercaseHash::operator()(std::string const& h) const
+{	// Convert to uppercase before calculating the hash value
+	auto upper{h};
+	for (auto& c : upper)
+		c &= static_cast<char>(0b11011111);
+	return std::hash<std::string>{}(upper);
+}
+
+bool
+String::CaseInsensitiveEqualTo::operator()(std::string const& a, std::string const& b) const
+{	// Case-insensitive comparison
+	std::string::size_type sz{a.size()};
+	if (b.size() != sz)
+		return false;
+	for (std::string::size_type i{0}; i < sz; ++i)
+		if ((a[i] ^ b[i]) & static_cast<char>(0b11011111))
+			return false;
+	return true;
+}
+
 std::error_code
 make_error_code(String::Exception::Code e) noexcept
 {
@@ -273,12 +289,21 @@ make_error_code(String::Exception::Code e) noexcept
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
 		{
-			switch (e) {
-				default: return "Unknown Error";
+			using namespace std::string_literals;
+			switch (static_cast<String::Exception::Code>(e)) {
+				default: return "Unknown Error"s;
 			}
 		}
 	} cat;
 	return {static_cast<int>(e), cat};
 }
+
+std::string_view
+toStringView(std::tuple<char const*, char const*, char const*> const& triplet)
+{ return {std::get<0>(triplet), std::get<1>(triplet)}; }
+
+std::string
+toString(std::tuple<char const*, char const*, char const*> const& triplet)
+{ return {std::get<0>(triplet), std::get<1>(triplet)}; }
 
 }//namespace Format

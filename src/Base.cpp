@@ -82,14 +82,17 @@ BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 	}
 
 	for (int i{0}; i < inl - r; ++i)
-		if (ctx->table[in[i]] < 0)
-			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, std::string("'") + static_cast<char>(in[i]) + "'");
+		if (ctx->table[in[i]] < 0) {
+			char inv[]{'\'', static_cast<char>(in[i]), '\'', '\0'};
+			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
+		}
 
 	for (int i = inl - r; i < inl; ++i) {
 		if (ctx->table[in[i]] < 0) {
 			if (in[i] == '=')
 				return true;
-			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, std::string("'") + static_cast<char>(in[i]) + "'");
+			char inv[]{'\'', static_cast<char>(in[i]), '\'', '\0'};
+			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
 		}
 	}
 	return false;
@@ -281,8 +284,10 @@ Base16DecodeUpdate(BaseContext* ctx, unsigned char* out, int* outl, unsigned cha
 {
 	*outl = 0;
 	for (int i{0}; i < inl; ++i)
-		if (ctx->table[in[i]] < 0)
-			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, std::string("'") + static_cast<char>(in[i]) + "'");
+		if (ctx->table[in[i]] < 0) {
+			char inv[]{'\'', static_cast<char>(in[i]), '\'', '\0'};
+			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
+		}
 
 	if (ctx->curr != ctx->beg) {
 		out[0] = ctx->table[ctx->beg[0]] << 4 | ctx->table[in[0]];

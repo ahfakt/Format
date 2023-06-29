@@ -7,6 +7,7 @@
 #include <numeric>
 #include <cstring>
 #include <cassert>
+#include <string_view>
 #include <sys/types.h>
 #include <system_error>
 
@@ -18,10 +19,10 @@ int main()
 
 	buffer > str;
 
-	assert((str.getLine() == "First Line"));
-	assert((str.getLine() == ""));
-	assert((str.getLine() == "Third Line"));
-	assert((str.getLine() == ""));
+	assert((Format::toStringView(str.getLine()) == "First Line"));
+	assert((Format::toStringView(str.getLine()).empty()));
+	assert((Format::toStringView(str.getLine()) == "Third Line"));
+	assert((Format::toStringView(str.getLine()).empty()));
 
 	try {
 		str.getLine();

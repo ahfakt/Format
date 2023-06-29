@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <limits>
 #include <string_view>
+#include <utility>
 
 namespace Format {
 
@@ -41,7 +42,7 @@ class StringInput : public Stream::TransformInput {
 	provideDigits36(std::size_t start, std::size_t limit, unsigned base = 16);
 
 	std::size_t
-	provideUntil(std::size_t start, std::size_t limit, char delimiter = '\n');
+	provideUntil(std::size_t start, std::size_t& limit, char delimiter = '\n');
 
 public:
 	struct Exception : Input::Exception
@@ -69,11 +70,14 @@ public:
 	StringInput&
 	fromChars(std::floating_point auto& f, std::chars_format fmt, std::size_t precision = 0);
 
-	std::string_view
+	std::tuple<char const*, char const*, char const*>
 	getLine(std::size_t limit = std::numeric_limits<std::size_t>::max());
 
-	std::string_view
-	getUntil(char d = ' ', std::size_t limit = std::numeric_limits<std::size_t>::max());
+	std::tuple<char const*, char const*, char const*>
+	getUntil(char delim = ' ', std::size_t limit = std::numeric_limits<std::size_t>::max());
+
+	std::tuple<char const*, char const*, char const*>
+	getUntil(char const* regex = " ", std::size_t limit = std::numeric_limits<std::size_t>::max());
 };//class Format::StringInput
 
 class StringOutput : public Stream::TransformOutput {
@@ -129,10 +133,26 @@ public:
 	struct Exception {
 		enum class Code : int {};
 	};//struct Format::String::Exception
+
+	struct UppercaseHash {
+		std::size_t
+		operator()(std::string const& h) const;
+	};//struct Format::String::UppercaseHash
+
+	struct CaseInsensitiveEqualTo {
+		bool
+		operator()(std::string const& a, std::string const& b) const;
+	};//struct Format::String::CaseInsensitiveEqualTo
 };//class Format::String
 
 std::error_code
 make_error_code(String::Exception::Code e) noexcept;
+
+std::string_view
+toStringView(std::tuple<char const*, char const*, char const*> const& triplet);
+
+std::string
+toString(std::tuple<char const*, char const*, char const*> const& triplet);
 
 }//namespace Format
 
