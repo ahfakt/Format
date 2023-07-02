@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14.0)
+cmake_minimum_required(VERSION 3.20.0)
 project(Format VERSION 0.1 DESCRIPTION "Format related operations on streams")
 
 
