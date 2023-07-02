@@ -1,4 +1,5 @@
 <map id="Format::StringInput::Exception" name="Format::StringInput::Exception">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,209,133"/>
-<area shape="rect" id="node2" title=" " alt="" coords="47,5,168,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,196,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="47,5,155,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,89,103,123,98,123,98,89"/>
 </map>

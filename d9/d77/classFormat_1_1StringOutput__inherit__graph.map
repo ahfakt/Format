@@ -1,8 +1,13 @@
 <map id="Format::StringOutput" name="Format::StringOutput">
-<area shape="rect" id="node1" title=" " alt="" coords="5,181,581,412"/>
-<area shape="rect" id="node4" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="13,460,334,529"/>
-<area shape="rect" id="node6" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="359,475,468,515"/>
-<area shape="rect" id="node2" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="206,93,381,133"/>
-<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="236,5,351,45"/>
-<area shape="rect" id="node5" href="$d3/d2f/classFormat_1_1Dot.html" title=" " alt="" coords="125,577,221,617"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,571,565"/>
+<area shape="rect" id="Node000004" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="23,613,329,704"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,580,198,615,193,612,208,577"/>
+<area shape="rect" id="Node000006" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="353,624,449,693"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="368,577,389,623,384,625,364,580"/>
+<area shape="rect" id="Node000002" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="207,123,369,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,207,291,240,285,240,285,207"/>
+<area shape="rect" id="Node000003" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="237,5,339,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,89,291,123,285,123,285,89"/>
+<area shape="rect" id="Node000005" href="$d3/d2f/classFormat_1_1Dot.html" title=" " alt="" coords="135,752,217,821"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="179,718,179,752,173,752,173,718"/>
 </map>

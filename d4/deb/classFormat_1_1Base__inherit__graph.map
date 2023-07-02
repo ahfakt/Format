@@ -1,9 +1,15 @@
 <map id="Format::Base" name="Format::Base">
-<area shape="rect" id="node1" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="225,343,553,412"/>
-<area shape="rect" id="node2" href="$d3/d52/classFormat_1_1BaseDecode.html" title="Stream::Input Base decoder." alt="" coords="5,181,377,295"/>
-<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="109,93,273,133"/>
-<area shape="rect" id="node4" href="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="139,5,244,45"/>
-<area shape="rect" id="node5" href="$d1/d91/classFormat_1_1BaseEncode.html" title="Stream::Output Base encoder." alt="" coords="402,181,773,295"/>
-<area shape="rect" id="node6" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="500,93,675,133"/>
-<area shape="rect" id="node7" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="530,5,645,45"/>
+<area shape="rect" id="Node000001" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="224,443,532,533"/>
+<area shape="rect" id="Node000002" href="$d3/d52/classFormat_1_1BaseDecode.html" title="Stream::Input Base decoder." alt="" coords="5,240,367,395"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,402,330,441,326,445,281,406"/>
+<area shape="rect" id="Node000003" href="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="111,123,261,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="189,206,189,240,183,240,183,206"/>
+<area shape="rect" id="Node000004" href="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="140,5,232,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="189,89,189,123,183,123,183,89"/>
+<area shape="rect" id="Node000005" href="$d1/d91/classFormat_1_1BaseEncode.html" title="Stream::Output Base encoder." alt="" coords="391,240,751,395"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="475,406,430,445,426,441,472,402"/>
+<area shape="rect" id="Node000006" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="491,123,652,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="574,206,574,240,569,240,569,206"/>
+<area shape="rect" id="Node000007" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="521,5,622,75"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="574,89,574,123,569,123,569,89"/>
 </map>
