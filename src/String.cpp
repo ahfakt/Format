@@ -267,7 +267,7 @@ String::UppercaseHash::operator()(std::string const& h) const
 }
 
 bool
-String::CaseInsensitiveEqualTo::operator()(std::string const& a, std::string const& b) const
+String::CaseInsensitiveEqualTo::operator()(std::string const& a, std::string const& b) const noexcept
 {	// Case-insensitive comparison
 	std::string::size_type sz{a.size()};
 	if (b.size() != sz)
@@ -299,11 +299,11 @@ make_error_code(String::Exception::Code e) noexcept
 }
 
 std::string_view
-toStringView(std::tuple<char const*, char const*, char const*> const& triplet)
-{ return {std::get<0>(triplet), std::get<1>(triplet)}; }
+ToStringView(std::tuple<char const*, char const*, char const*> const& t)
+{ return {std::get<0>(t), std::get<1>(t)}; }
 
 std::string
-toString(std::tuple<char const*, char const*, char const*> const& triplet)
-{ return {std::get<0>(triplet), std::get<1>(triplet)}; }
+ToString(std::tuple<char const*, char const*, char const*> const& t)
+{ return {std::get<0>(t), std::get<1>(t)}; }
 
 }//namespace Format

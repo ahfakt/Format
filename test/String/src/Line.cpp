@@ -19,10 +19,10 @@ int main()
 
 	buffer > str;
 
-	assert((Format::toStringView(str.getLine()) == "First Line"));
-	assert((Format::toStringView(str.getLine()).empty()));
-	assert((Format::toStringView(str.getLine()) == "Third Line"));
-	assert((Format::toStringView(str.getLine()).empty()));
+	assert((Format::ToStringView(str.getLine()) == "First Line"));
+	assert((Format::ToStringView(str.getLine()).empty()));
+	assert((Format::ToStringView(str.getLine()) == "Third Line"));
+	assert((Format::ToStringView(str.getLine()).empty()));
 
 	try {
 		str.getLine();

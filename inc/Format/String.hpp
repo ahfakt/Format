@@ -141,7 +141,7 @@ public:
 
 	struct CaseInsensitiveEqualTo {
 		bool
-		operator()(std::string const& a, std::string const& b) const;
+		operator()(std::string const& a, std::string const& b) const noexcept;
 	};//struct Format::String::CaseInsensitiveEqualTo
 };//class Format::String
 
@@ -149,10 +149,10 @@ std::error_code
 make_error_code(String::Exception::Code e) noexcept;
 
 std::string_view
-toStringView(std::tuple<char const*, char const*, char const*> const& triplet);
+ToStringView(std::tuple<char const*, char const*, char const*> const& triplet);
 
 std::string
-toString(std::tuple<char const*, char const*, char const*> const& triplet);
+ToString(std::tuple<char const*, char const*, char const*> const& triplet);
 
 }//namespace Format
 
