@@ -435,7 +435,7 @@ $(function() {
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="keywordtype">void</span></div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>swap(BaseDecode&amp; a, BaseDecode&amp; b) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>{</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    swap(<span class="keyword">static_cast&lt;</span><a class="code hl_classRef" href="../../../Stream/db/d03/classStream_1_1TransformInput.html">Stream::TransformInput</a>&amp;<span class="keyword">&gt;</span>(a), <span class="keyword">static_cast&lt;</span><a class="code hl_classRef" href="../../../Stream/db/d03/classStream_1_1TransformInput.html">Stream::TransformInput</a>&amp;<span class="keyword">&gt;</span>(b));</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    swap(<span class="keyword">static_cast&lt;</span>Stream::TransformInput&amp;<span class="keyword">&gt;</span>(a), <span class="keyword">static_cast&lt;</span>Stream::TransformInput&amp;<span class="keyword">&gt;</span>(b));</div>
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    std::swap(a.mCtx, b.mCtx);</div>
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    std::swap(a.mTempBeg, b.mTempBeg);</div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    std::swap(a.mTempCurr, b.mTempCurr);</div>
@@ -692,7 +692,7 @@ $(function() {
 <div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span><span class="keywordtype">void</span></div>
 <div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>swap(BaseEncode&amp; a, BaseEncode&amp; b) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>{</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>    swap(<span class="keyword">static_cast&lt;</span><a class="code hl_classRef" href="../../../Stream/d1/dff/classStream_1_1TransformOutput.html">Stream::TransformOutput</a>&amp;<span class="keyword">&gt;</span>(a), <span class="keyword">static_cast&lt;</span><a class="code hl_classRef" href="../../../Stream/d1/dff/classStream_1_1TransformOutput.html">Stream::TransformOutput</a>&amp;<span class="keyword">&gt;</span>(b));</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>    swap(<span class="keyword">static_cast&lt;</span>Stream::TransformOutput&amp;<span class="keyword">&gt;</span>(a), <span class="keyword">static_cast&lt;</span>Stream::TransformOutput&amp;<span class="keyword">&gt;</span>(b));</div>
 <div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>    std::swap(a.mCtx, b.mCtx);</div>
 <div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>}</div>
 <div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span> </div>
@@ -812,8 +812,6 @@ $(function() {
 <div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>}</div>
 <div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span> </div>
 <div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>}<span class="comment">//namespace Format</span></div>
-<div class="ttc" id="aclassStream_1_1TransformInput_html"><div class="ttname"><a href="../../../Stream/db/d03/classStream_1_1TransformInput.html">Stream::TransformInput</a></div></div>
-<div class="ttc" id="aclassStream_1_1TransformOutput_html"><div class="ttname"><a href="../../../Stream/d1/dff/classStream_1_1TransformOutput.html">Stream::TransformOutput</a></div></div>
 <div class="ttc" id="astructFormat_1_1BaseContext_html"><div class="ttname"><a href="../../de/d12/structFormat_1_1BaseContext.html">Format::BaseContext</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db0/Base_8cpp_source.html#l00007">Base.cpp:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

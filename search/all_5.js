@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['file_0',['File',['../../Stream/df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1',1,'Stream::File::File()'],['../../Stream/df/d21/classStream_1_1File.html',1,'Stream::File']]],
-  ['flush_1',['flush',['../../Stream/df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677',1,'Stream::File']]]
+  ['string_0',['String',['../df/d21/classFormat_1_1String.html',1,'Format']]],
+  ['stringinput_1',['StringInput',['../d1/df1/classFormat_1_1StringInput.html',1,'Format']]],
+  ['stringoutput_2',['StringOutput',['../d1/dc1/classFormat_1_1StringOutput.html',1,'Format']]]
 ];

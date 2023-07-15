@@ -1,9 +1,7 @@
 <map id="Format::StringInput" name="Format::StringInput">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,720,555"/>
-<area shape="rect" id="Node000004" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="315,603,411,672"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="365,569,365,603,360,603,360,569"/>
-<area shape="rect" id="Node000002" href="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="287,123,438,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,206,365,240,360,240,360,206"/>
-<area shape="rect" id="Node000003" href="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="317,5,409,75"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,89,365,123,360,123,360,89"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,643,405"/>
+<area shape="rect" id="Node000003" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="276,453,372,523"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="327,419,327,453,321,453,321,419"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="249,5,399,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="327,89,327,123,321,123,321,89"/>
 </map>
