@@ -70,13 +70,13 @@ public:
 	StringInput&
 	fromChars(std::floating_point auto& f, std::chars_format fmt, std::size_t precision = 0);
 
-	std::tuple<char const*, char const*, char const*>
+	std::string_view
 	getLine(std::size_t limit = std::numeric_limits<std::size_t>::max());
 
-	std::tuple<char const*, char const*, char const*>
+	std::string_view
 	getUntil(char delim = ' ', std::size_t limit = std::numeric_limits<std::size_t>::max());
 
-	std::tuple<char const*, char const*, char const*>
+	std::string_view
 	getUntil(char const* regex = " ", std::size_t limit = std::numeric_limits<std::size_t>::max());
 };//class Format::StringInput
 

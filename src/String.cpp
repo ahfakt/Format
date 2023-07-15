@@ -220,7 +220,7 @@ StringInput::provideUntil(std::size_t const i, std::size_t& l, char d)
 	}
 }
 
-std::tuple<char const*, char const*, char const*>
+std::string_view
 StringInput::getLine(std::size_t l)
 {
 	auto e{provideUntil(0, l, '\n')};
@@ -228,16 +228,16 @@ StringInput::getLine(std::size_t l)
 		--l;
 	char const* b{reinterpret_cast<char const*>(getData())};
 	advanceData(e);
-	return {b, b + l, b + e};
+	return {b, b + l};
 }
 
-std::tuple<char const*, char const*, char const*>
+std::string_view
 StringInput::getUntil(char d, std::size_t l)
 {
 	auto e{provideUntil(0, l, d)};
 	char const* b{reinterpret_cast<char const*>(getData())};
 	advanceData(e);
-	return {b, b + l, b + e};
+	return {b, b + l};
 }
 
 StringOutput&
