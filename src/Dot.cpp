@@ -5,7 +5,7 @@ namespace Format {
 std::error_code
 make_error_code(Dot::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Format::Dot"; }
@@ -17,7 +17,7 @@ make_error_code(Dot::Exception::Code e) noexcept
 			default: return "Unknown Error";
 			}
 		}
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 

@@ -281,7 +281,7 @@ String::CaseInsensitiveEqualTo::operator()(std::string const& a, std::string con
 std::error_code
 make_error_code(String::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Format::String"; }
@@ -294,7 +294,7 @@ make_error_code(String::Exception::Code e) noexcept
 				default: return "Unknown Error"s;
 			}
 		}
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 
