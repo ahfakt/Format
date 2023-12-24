@@ -1,9 +1,11 @@
 <map id="Format::Dot" name="Format::Dot">
-<area shape="rect" id="Node000001" title=" " alt="" coords="247,635,329,704"/>
-<area shape="rect" id="Node000002" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="135,496,441,587"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,601,291,635,285,635,285,601"/>
-<area shape="rect" id="Node000003" href="$d1/dc1/classFormat_1_1StringOutput.html" title=" " alt="" coords="5,123,571,448"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,462,291,496,285,496,285,462"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="207,5,369,75"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="291,89,291,123,285,123,285,89"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="247,752,329,821"/>
+<area shape="rect" id="Node000002" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="135,613,441,704"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,719,291,752,285,752,285,719"/>
+<area shape="rect" id="Node000003" href="$d1/dc1/classFormat_1_1StringOutput.html" title=" " alt="" coords="5,240,571,565"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,580,291,613,285,613,285,580"/>
+<area shape="rect" id="Node000004" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="207,123,369,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="291,207,291,240,285,240,285,207"/>
+<area shape="rect" id="Node000005" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="237,5,339,75"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="291,90,291,123,285,123,285,90"/>
 </map>
