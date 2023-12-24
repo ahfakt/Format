@@ -1,5 +1,4 @@
-#ifndef FORMAT_DOT_HPP
-#define	FORMAT_DOT_HPP
+#pragma once
 
 #include "String.hpp"
 
@@ -33,5 +32,3 @@ template <>
 struct is_error_code_enum<Format::Dot::Exception::Code> : true_type {};
 
 }//namespace std
-
-#endif //FORMAT_DOT_HPP

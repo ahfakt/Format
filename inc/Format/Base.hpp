@@ -1,5 +1,4 @@
-#ifndef FORMAT_BASE_HPP
-#define	FORMAT_BASE_HPP
+#pragma once
 
 #include <Stream/Transform.hpp>
 #include <memory>
@@ -136,5 +135,3 @@ template <>
 struct is_error_code_enum<Format::Base::Exception::Code> : true_type {};
 
 }//namespace std
-
-#endif //FORMAT_BASE_HPP

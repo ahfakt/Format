@@ -1,5 +1,4 @@
-#ifndef FORMAT_STRING_HPP
-#define	FORMAT_STRING_HPP
+#pragma once
 
 #include <Stream/Transform.hpp>
 #include <charconv>
@@ -164,5 +163,3 @@ struct is_error_code_enum<Format::String::Exception::Code> : true_type {};
 }//namespace std
 
 #include "../../src/Format/String.tpp"
-
-#endif //FORMAT_STRING_HPP
