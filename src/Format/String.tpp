@@ -7,37 +7,37 @@
 namespace Format {
 
 template <typename F>
-constexpr std::size_t max_exponent_digits10{0};
+inline constexpr std::size_t max_exponent_digits10{0};
 
 template <>
-constexpr std::size_t max_exponent_digits10<float>{2}; // FLT_MAX_10_EXP = 38
+inline constexpr std::size_t max_exponent_digits10<float>{2}; // FLT_MAX_10_EXP = 38
 
 template <>
-constexpr std::size_t max_exponent_digits10<double>{3}; // DBL_MAX_10_EXP = 308
+inline constexpr std::size_t max_exponent_digits10<double>{3}; // DBL_MAX_10_EXP = 308
 
 template <>
-constexpr std::size_t max_exponent_digits10<long double>{4}; // LDBL_MAX_10_EXP = 4932
+inline constexpr std::size_t max_exponent_digits10<long double>{4}; // LDBL_MAX_10_EXP = 4932
 
 template <typename F>
-constexpr std::size_t max_exponent_digits2{0};
+inline constexpr std::size_t max_exponent_digits2{0};
 
 template <>
-constexpr std::size_t max_exponent_digits2<float>{3}; // FLT_MAX_EXP = 128
+inline constexpr std::size_t max_exponent_digits2<float>{3}; // FLT_MAX_EXP = 128
 
 template <>
-constexpr std::size_t max_exponent_digits2<double>{4}; // DBL_MAX_EXP = 1024
+inline constexpr std::size_t max_exponent_digits2<double>{4}; // DBL_MAX_EXP = 1024
 
 template <>
-constexpr std::size_t max_exponent_digits2<long double>{5}; // LDBL_MAX_EXP = 16384
+inline constexpr std::size_t max_exponent_digits2<long double>{5}; // LDBL_MAX_EXP = 16384
 
 template <std::floating_point F>
-constexpr std::size_t max_fixed_length{2 + std::numeric_limits<F>::max_digits10 + std::numeric_limits<F>::max_exponent10};
+inline constexpr std::size_t max_fixed_length{2 + std::numeric_limits<F>::max_digits10 + std::numeric_limits<F>::max_exponent10};
 
 template <std::floating_point F>
-constexpr std::size_t max_hex_length{2 + 1 + std::numeric_limits<F>::digits / 4 + 2 + max_exponent_digits2<F>};
+inline constexpr std::size_t max_hex_length{2 + 1 + std::numeric_limits<F>::digits / 4 + 2 + max_exponent_digits2<F>};
 
 template <std::floating_point F>
-constexpr std::size_t max_scientific_length{2 + std::numeric_limits<F>::max_digits10 + 2 + max_exponent_digits10<F>};
+inline constexpr std::size_t max_scientific_length{2 + std::numeric_limits<F>::max_digits10 + 2 + max_exponent_digits10<F>};
 
 StringInput&
 StringInput::operator>>(Stream::Char auto& c)
@@ -84,26 +84,22 @@ StringInput::fromChars(std::floating_point auto& f, std::chars_format fmt, std::
 			il = 1 + std::numeric_limits<F>::max_exponent10;
 			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10 + std::numeric_limits<F>::max_exponent10;
 			el = 0;
-			break;
-		}
+		} break;
 		case std::chars_format::scientific: {
 			il = 1;
 			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10;
 			el = max_exponent_digits10<F>;
-			break;
-		}
+		} break;
 		case std::chars_format::general: {
 			il = p ? 1 + std::numeric_limits<F>::max_exponent10 : 1;
 			fl = p ? p : 1 + std::numeric_limits<F>::max_digits10;
 			el = max_exponent_digits10<F>;
-			break;
-		}
+		} break;
 		case std::chars_format::hex: {
 			il = 1;
 			fl = p ? p : std::numeric_limits<F>::digits / 4;
 			el = max_exponent_digits2<F>;
-			break;
-		}
+		} break;
 		default:
 			throw Exception{std::make_error_code(std::errc::invalid_argument)};
 	}
