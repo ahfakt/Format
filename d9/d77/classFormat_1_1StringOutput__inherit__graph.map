@@ -1,8 +1,8 @@
 <map id="Format::StringOutput" name="Format::StringOutput">
-<area shape="rect" id="node1" title=" " alt="" coords="5,181,581,412"/>
-<area shape="rect" id="node4" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="13,460,334,529"/>
-<area shape="rect" id="node6" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="359,475,468,515"/>
-<area shape="rect" id="node2" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="206,93,381,133"/>
-<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="236,5,351,45"/>
-<area shape="rect" id="node5" href="$d3/d2f/classFormat_1_1Dot.html" title=" " alt="" coords="125,577,221,617"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,256,648,509"/>
+<area shape="rect" id="node4" href="$d8/db3/classFormat_1_1DotOutput.html" title=" " alt="" coords="16,557,376,649"/>
+<area shape="rect" id="node6" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="400,565,515,642"/>
+<area shape="rect" id="node2" href="/tmp/build/aarch64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="233,131,420,208"/>
+<area shape="rect" id="node3" href="/tmp/build/aarch64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="266,5,387,83"/>
+<area shape="rect" id="node5" href="$d3/d2f/classFormat_1_1Dot.html" title=" " alt="" coords="147,697,245,775"/>
 </map>

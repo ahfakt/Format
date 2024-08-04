@@ -1,6 +1,6 @@
 <map id="Format::BaseEncode" name="Format::BaseEncode">
-<area shape="rect" id="node1" title="Stream::Output Base encoder." alt="" coords="5,181,376,295"/>
-<area shape="rect" id="node4" href="$db/df1/classFormat_1_1Base.html" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="27,343,355,412"/>
-<area shape="rect" id="node2" href="/tmp/build/x64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="103,93,278,133"/>
-<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="133,5,248,45"/>
+<area shape="rect" id="node1" title="Stream::Output Base encoder." alt="" coords="5,256,416,392"/>
+<area shape="rect" id="node4" href="$db/df1/classFormat_1_1Base.html" title="Stream::Input / Stream::Output Base decoder and encoder." alt="" coords="36,440,385,532"/>
+<area shape="rect" id="node2" href="/tmp/build/aarch64/Release/Stream/tag.xml$d1/dff/classStream_1_1TransformOutput.html" title=" " alt="" coords="117,131,304,208"/>
+<area shape="rect" id="node3" href="/tmp/build/aarch64/Release/Stream/tag.xml$df/dc2/classStream_1_1Output.html" title=" " alt="" coords="150,5,271,83"/>
 </map>

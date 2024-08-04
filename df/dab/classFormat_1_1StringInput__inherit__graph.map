@@ -1,6 +1,6 @@
 <map id="Format::StringInput" name="Format::StringInput">
-<area shape="rect" id="node1" title=" " alt="" coords="5,181,611,353"/>
-<area shape="rect" id="node4" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="253,401,363,441"/>
-<area shape="rect" id="node2" href="/tmp/build/x64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="226,93,390,133"/>
-<area shape="rect" id="node3" href="/tmp/build/x64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="255,5,361,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,256,740,480"/>
+<area shape="rect" id="node4" href="$df/d21/classFormat_1_1String.html" title=" " alt="" coords="315,528,430,605"/>
+<area shape="rect" id="node2" href="/tmp/build/aarch64/Release/Stream/tag.xml$db/d03/classStream_1_1TransformInput.html" title=" " alt="" coords="285,131,460,208"/>
+<area shape="rect" id="node3" href="/tmp/build/aarch64/Release/Stream/tag.xml$d7/d83/classStream_1_1Input.html" title=" " alt="" coords="317,5,428,83"/>
 </map>
