@@ -15,7 +15,6 @@ mkdir build && cd Format
 cmake \
     -B../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Format \
     -DCMAKE_BUILD_TYPE:STRING=${BUILD_TYPE} \
-    -DCMAKE_CXX_STANDARD:STRING=20 \
     -G "Unix Makefiles"
 
 # Build
