@@ -164,7 +164,7 @@ BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 
 	for (int i{0}; i < inl - r; ++i)
 		if (ctx->table[in[i]] < 0) {
-			char inv[]{'\'', '0', 'x', Base16EncodeTable[in[i] >> 4], Base16EncodeTable[in[i] & 0x0F], '\'', '\0'};
+			char inv[]{'\'', '0', 'x', static_cast<char>(Base16EncodeTable[in[i] >> 4]), static_cast<char>(Base16EncodeTable[in[i] & 0x0F]), '\'', '\0'};
 			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
 		}
 
@@ -172,7 +172,7 @@ BaseValidate(BaseContext* ctx, unsigned char const* in, int inl)
 		if (ctx->table[in[i]] < 0) {
 			if (in[i] == '=')
 				return true;
-			char inv[]{'\'', '0', 'x', Base16EncodeTable[in[i] >> 4], Base16EncodeTable[in[i] & 0x0F], '\'', '\0'};
+			char inv[]{'\'', '0', 'x', static_cast<char>(Base16EncodeTable[in[i] >> 4]), static_cast<char>(Base16EncodeTable[in[i] & 0x0F]), '\'', '\0'};
 			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
 		}
 	}
@@ -311,7 +311,7 @@ Base16DecodeUpdate(BaseContext* ctx, unsigned char* out, int* outl, unsigned cha
 	*outl = 0;
 	for (int i{0}; i < inl; ++i)
 		if (ctx->table[in[i]] < 0) {
-			char inv[]{'\'', '0', 'x', Base16EncodeTable[in[i] >> 4], Base16EncodeTable[in[i] & 0x0F], '\'', '\0'};
+			char inv[]{'\'', '0', 'x', static_cast<char>(Base16EncodeTable[in[i] >> 4]), static_cast<char>(Base16EncodeTable[in[i] & 0x0F]), '\'', '\0'};
 			throw BaseDecode::Exception(Base::Exception::Code::InvalidCharacter, inv);
 		}
 

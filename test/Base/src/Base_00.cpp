@@ -2,19 +2,19 @@
 #include <iostream>
 #include <Stream/File.hpp>
 #include <Format/Base.hpp>
-#include <StreamTest/Util.hpp>
+#include <Stream/Test/Util.hpp>
 
 std::vector<std::byte>
 testEncode(char const* fileName, Format::BaseMode mode, int length, int maxChunkLength)
 {
-	std::vector<std::byte> toEncode = StreamTest::GetRandomBytes<std::chrono::minutes>(length);
+	std::vector<std::byte> toEncode = Stream::Test::GetRandomBytes<std::chrono::minutes>(length);
 
 	Stream::File file(fileName, Stream::File::Mode::W);
 	Stream::BufferOutput buffer(file.getBlockSize());
 	Format::BaseEncode encoder(mode);
 	file < buffer < encoder;
 
-	StreamTest::WriteRandomChunks(encoder, toEncode,
+	Stream::Test::WriteRandomChunks(encoder, toEncode,
 			std::uniform_int_distribution<int> {1, maxChunkLength});
 	return toEncode;
 }
@@ -30,7 +30,7 @@ testDecode(char const* fileName, Format::BaseMode mode, int length, int maxChunk
 	Format::BaseDecode decoder(mode);
 	file > buffer > decoder;
 
-	StreamTest::ReadRandomChunks(decoder, decoded,
+	Stream::Test::ReadRandomChunks(decoder, decoded,
 			std::uniform_int_distribution<int> {1, maxChunkLength});
 	return decoded;
 }
