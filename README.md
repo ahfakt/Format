@@ -18,8 +18,8 @@ cmake \
     -G "Unix Makefiles"
 
 # Build
-# Stream | StreamDoc
-# Format | FormatDoc
+# Stream | Stream_Doc
+# Format | Format_Doc
 # Test targets are available only when BUILD_TYPE=Debug
 # Documentation is available only when BUILD_TYPE=Release
 cmake \
